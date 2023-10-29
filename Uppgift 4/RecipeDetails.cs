@@ -28,10 +28,31 @@ namespace Uppgift_4
 
         }
 
-        private void AddNewRecipeUserInterfaceSettings() //Cornelia
+        private void AddNewRecipeUserInterfaceSettings()
         {
 
         }
 
+        private void buttonAddRecipe_Click(object sender, EventArgs e) //Cornelia
+        {
+            AddRecipe = true;
+            UppdatedRecipe = new Recipe
+            {
+                Title = textBoxTitle.Text,
+                Type = textBoxType.Text,
+                Description = String.Join(@"\n", richTxtDescription.Lines)
+            };
+
+        }
+
+        private void buttonDeleteRecipe_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonUpdateRecipe_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
