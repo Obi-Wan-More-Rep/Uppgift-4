@@ -22,5 +22,16 @@ namespace Uppgift_4
         {
             InitializeComponent();
         }
+
+        private void StandardUserInterfaceSettings() // Vanessa
+        {
+
+        }
+
+        private void AddNewRecipeUserInterfaceSettings() //Cornelia
+        {
+
+        }
+
     }
 }
