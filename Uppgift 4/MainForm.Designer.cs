@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             dataGridView = new DataGridView();
+            Title = new DataGridViewTextBoxColumn();
             buttonSearch = new Button();
             buttonSignIn = new Button();
             buttonSignOut = new Button();
@@ -36,7 +37,6 @@
             buttonDelete = new Button();
             textBoxSearch = new TextBox();
             comboBox1 = new ComboBox();
-            Title = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -50,6 +50,13 @@
             dataGridView.RowTemplate.Height = 29;
             dataGridView.Size = new Size(410, 297);
             dataGridView.TabIndex = 0;
+            // 
+            // Title
+            // 
+            Title.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Title.HeaderText = "Title";
+            Title.MinimumWidth = 6;
+            Title.Name = "Title";
             // 
             // buttonSearch
             // 
@@ -89,7 +96,7 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(12, 335);
+            buttonDelete.Location = new Point(3, 335);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(94, 29);
             buttonDelete.TabIndex = 5;
@@ -110,13 +117,6 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(151, 28);
             comboBox1.TabIndex = 7;
-            // 
-            // Title
-            // 
-            Title.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Title.HeaderText = "Title";
-            Title.MinimumWidth = 6;
-            Title.Name = "Title";
             // 
             // MainForm
             // 

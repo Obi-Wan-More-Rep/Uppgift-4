@@ -46,27 +46,27 @@
             // 
             // buttonUpdateRecipe
             // 
-            buttonUpdateRecipe.Location = new Point(601, 150);
+            buttonUpdateRecipe.Location = new Point(581, 149);
             buttonUpdateRecipe.Name = "buttonUpdateRecipe";
-            buttonUpdateRecipe.Size = new Size(94, 29);
+            buttonUpdateRecipe.Size = new Size(152, 48);
             buttonUpdateRecipe.TabIndex = 1;
             buttonUpdateRecipe.Text = "Update";
             buttonUpdateRecipe.UseVisualStyleBackColor = true;
             // 
             // buttonDeleteRecipe
             // 
-            buttonDeleteRecipe.Location = new Point(601, 259);
+            buttonDeleteRecipe.Location = new Point(581, 238);
             buttonDeleteRecipe.Name = "buttonDeleteRecipe";
-            buttonDeleteRecipe.Size = new Size(94, 29);
+            buttonDeleteRecipe.Size = new Size(152, 54);
             buttonDeleteRecipe.TabIndex = 2;
             buttonDeleteRecipe.Text = "Delete receipe";
             buttonDeleteRecipe.UseVisualStyleBackColor = true;
             // 
             // buttonAddRecipe
             // 
-            buttonAddRecipe.Location = new Point(601, 368);
+            buttonAddRecipe.Location = new Point(581, 342);
             buttonAddRecipe.Name = "buttonAddRecipe";
-            buttonAddRecipe.Size = new Size(94, 29);
+            buttonAddRecipe.Size = new Size(152, 50);
             buttonAddRecipe.TabIndex = 3;
             buttonAddRecipe.Text = "Add new";
             buttonAddRecipe.UseVisualStyleBackColor = true;
