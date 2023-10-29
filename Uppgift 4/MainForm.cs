@@ -123,13 +123,13 @@ namespace Uppgift_4
         {
             string searchText = textBoxSearch.Text.ToLower(); // vara inte känslig om  stora boksatver
 
-             dataGridView.Rows.Clear();
+            dataGridView.Rows.Clear();
 
             foreach (var recipe in recipes)
             {
                 if (recipe.Title.ToLower().Contains(searchText) ||
-                    recipe.Type.ToLower().Contains(searchText) )
-                  
+                    recipe.Type.ToLower().Contains(searchText))
+
                 {
                     dataGridView.Rows.Add(recipe.Title, recipe.Description, recipe.Type);
                 }
