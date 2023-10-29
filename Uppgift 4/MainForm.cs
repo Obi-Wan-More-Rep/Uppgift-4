@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Uppgift_4
 {
@@ -60,7 +61,7 @@ namespace Uppgift_4
 
         //Uppdatera receptet i textfilen
         private void UpdateTextFile() // Kevin
-        { 
+        {
             using (StreamWriter writer = new StreamWriter(RecipeFilePath, false))
             {
                 foreach (Recipe recipe in recipes)
@@ -116,6 +117,23 @@ namespace Uppgift_4
         private void signOutButton_Click(object sender, EventArgs e) // Kamal
         {
 
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBoxSearch.Text.ToLower(); // 
+
+             dataGridView.Rows.Clear();
+
+            foreach (var recept in recipes)
+            {
+                if (recept.Title.ToLower().Contains(searchText) ||
+                    recept.Type.ToLower().Contains(searchText) )
+                  
+                {
+                    dataGridView.Rows.Add(recept.Title, recept.Description, recept.Type);
+                }
+            }
         }
     }
 }

@@ -44,12 +44,11 @@
             // 
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { Title });
-            dataGridView.Location = new Point(198, 158);
-            dataGridView.Margin = new Padding(4);
+            dataGridView.Location = new Point(158, 126);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
             dataGridView.RowTemplate.Height = 29;
-            dataGridView.Size = new Size(512, 371);
+            dataGridView.Size = new Size(410, 297);
             dataGridView.TabIndex = 0;
             // 
             // Title
@@ -61,10 +60,9 @@
             // 
             // buttonSearch
             // 
-            buttonSearch.Location = new Point(198, 78);
-            buttonSearch.Margin = new Padding(4);
+            buttonSearch.Location = new Point(158, 62);
             buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(118, 36);
+            buttonSearch.Size = new Size(94, 29);
             buttonSearch.TabIndex = 1;
             buttonSearch.Text = "Search";
             buttonSearch.UseVisualStyleBackColor = true;
@@ -72,10 +70,9 @@
             // 
             // buttonSignIn
             // 
-            buttonSignIn.Location = new Point(4, 158);
-            buttonSignIn.Margin = new Padding(4);
+            buttonSignIn.Location = new Point(3, 126);
             buttonSignIn.Name = "buttonSignIn";
-            buttonSignIn.Size = new Size(118, 36);
+            buttonSignIn.Size = new Size(94, 29);
             buttonSignIn.TabIndex = 2;
             buttonSignIn.Text = "Sign in";
             buttonSignIn.UseVisualStyleBackColor = true;
@@ -83,10 +80,9 @@
             // 
             // buttonSignOut
             // 
-            buttonSignOut.Location = new Point(4, 239);
-            buttonSignOut.Margin = new Padding(4);
+            buttonSignOut.Location = new Point(3, 191);
             buttonSignOut.Name = "buttonSignOut";
-            buttonSignOut.Size = new Size(118, 36);
+            buttonSignOut.Size = new Size(94, 29);
             buttonSignOut.TabIndex = 3;
             buttonSignOut.Text = "Sign out";
             buttonSignOut.UseVisualStyleBackColor = true;
@@ -94,10 +90,9 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(4, 331);
-            buttonAdd.Margin = new Padding(4);
+            buttonAdd.Location = new Point(3, 265);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(118, 36);
+            buttonAdd.Size = new Size(94, 29);
             buttonAdd.TabIndex = 4;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = true;
@@ -105,10 +100,9 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(4, 419);
-            buttonDelete.Margin = new Padding(4);
+            buttonDelete.Location = new Point(3, 335);
             buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(118, 36);
+            buttonDelete.Size = new Size(94, 29);
             buttonDelete.TabIndex = 5;
             buttonDelete.Text = "Delete";
             buttonDelete.UseVisualStyleBackColor = true;
@@ -116,26 +110,25 @@
             // 
             // textBoxSearch
             // 
-            textBoxSearch.Location = new Point(370, 78);
-            textBoxSearch.Margin = new Padding(4);
+            textBoxSearch.Location = new Point(296, 62);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(320, 31);
+            textBoxSearch.Size = new Size(257, 27);
             textBoxSearch.TabIndex = 6;
+            textBoxSearch.TextChanged += textBoxSearch_TextChanged;
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(784, 79);
-            comboBox1.Margin = new Padding(4);
+            comboBox1.Location = new Point(627, 63);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(188, 33);
+            comboBox1.Size = new Size(151, 28);
             comboBox1.TabIndex = 7;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 562);
+            ClientSize = new Size(800, 450);
             Controls.Add(comboBox1);
             Controls.Add(textBoxSearch);
             Controls.Add(buttonDelete);
@@ -144,7 +137,6 @@
             Controls.Add(buttonSignIn);
             Controls.Add(buttonSearch);
             Controls.Add(dataGridView);
-            Margin = new Padding(4);
             Name = "MainForm";
             Text = "International Food AB";
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
