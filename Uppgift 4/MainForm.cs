@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Uppgift_4
@@ -40,6 +41,48 @@ namespace Uppgift_4
                     }
                 }
             }
+        }
+
+        //Uppdatera receptet i textfilen
+
+        private void UpdateTextFile()
+        {
+            Debug.WriteLine("Uppdaterar textfilen");
+            using (StreamWriter writer = new StreamWriter(RecipeFilePath, false))
+            {
+                foreach (Recipe recipe in recipes)
+                {
+                    writer.WriteLine($"{recipe.Title},{recipe.Description},{recipe.Type}");
+                }
+                Debug.WriteLine("Recept textfilen är uppdaterad.");
+            }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSignIn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSignOut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
