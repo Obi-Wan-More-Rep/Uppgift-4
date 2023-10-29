@@ -1,10 +1,45 @@
+using System.Windows.Forms;
+
 namespace Uppgift_4
 {
     public partial class MainForm : Form
     {
+        public List<Recipe> recipes { get; set; } = new List<Recipe>();
+        public List<Admin> admins { get; set; } = new List<Admin>();
+        private const string AdminFilePath = @"admins.txt";
+        private const string RecipeFilePath = @"recipes.txt";
+        private bool isAdminSignedIn { get; set; } = true; // skapa en Login form, Kamal
+
+
         public MainForm()
         {
             InitializeComponent();
+            //LoadAdmin();
+            LoadRecipes();
+        }
+        // Lägga till recept i recipe listan och i DataGridView
+        private void LoadRecipes()
+        {
+            if (!File.Exists(RecipeFilePath))
+            {
+                // Create a new empty ".txt" file
+                File.Create(RecipeFilePath).Close();
+            }
+
+
+            using (StreamReader reader = new StreamReader(RecipeFilePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(',');
+                    if (parts.Length == 3)
+                    {
+                        recipes.Add(new Recipe { Title = parts[0], Description = parts[1], Type = parts[2] });
+                        dataGridView.Rows.Add(parts[0]);
+                    }
+                }
+            }
         }
     }
 }
