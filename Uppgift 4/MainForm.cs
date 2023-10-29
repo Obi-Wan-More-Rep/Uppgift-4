@@ -43,44 +43,75 @@ namespace Uppgift_4
             }
         }
 
-        //Uppdatera receptet i textfilen
-
-        private void UpdateTextFile()
+        // Lägga till admins i admins listan
+        private void LoadAdmin()
         {
-            Debug.WriteLine("Uppdaterar textfilen");
+
+        }
+
+        // Nollställa DataGridView
+        private void ResetDataGridView()
+        {
+            dataGridView.Rows.Clear();
+        }
+
+
+
+        //Uppdatera receptet i textfilen
+        private void UpdateTextFile() // Kevin
+        {
             using (StreamWriter writer = new StreamWriter(RecipeFilePath, false))
             {
                 foreach (Recipe recipe in recipes)
                 {
                     writer.WriteLine($"{recipe.Title},{recipe.Description},{recipe.Type}");
                 }
-                Debug.WriteLine("Recept textfilen är uppdaterad.");
             }
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        // Lägg till ett nytt recept
+        private void buttonAdd_Click(object sender, EventArgs e) // Vanessa & Cornelia
         {
 
         }
 
-        private void buttonSignIn_Click(object sender, EventArgs e)
+        private void buttonSignIn_Click(object sender, EventArgs e) // Kamal
         {
 
         }
 
-        private void buttonSignOut_Click(object sender, EventArgs e)
+        private void buttonSignOut_Click(object sender, EventArgs e) // Kamal
         {
 
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
+        // Ta bort markerad recipe
+        private void buttonDelete_Click(object sender, EventArgs e) // Simon
+        {
+            // Ta bort receptet från listan
+        }
+
+
+        // söka på recept från recipes listan och visa i DataGridView
+        private void buttonSearch_Click(object sender, EventArgs e) // Najah
         {
 
         }
 
-        
+        // Öppna en ny Form när man klickar på en rad för att visa detaljerad information. Om du är inloggad som "Admin" så kan du även redigera receptet
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e) // Kevin & Najah
+        {
 
-        private void buttonSearch_Click(object sender, EventArgs e)
+        }
+
+        // Logga in som Admin
+        private void SignInButton_Click(object sender, EventArgs e) // Kamal
+        {
+
+        }
+
+        // Logga ut
+        private void signOutButton_Click(object sender, EventArgs e) // Kamal
         {
 
         }
