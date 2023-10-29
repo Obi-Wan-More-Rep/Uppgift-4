@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace Uppgift_4
@@ -59,13 +60,14 @@ namespace Uppgift_4
 
         //Uppdatera receptet i textfilen
         private void UpdateTextFile() // Kevin
-        {
+        { 
             using (StreamWriter writer = new StreamWriter(RecipeFilePath, false))
             {
                 foreach (Recipe recipe in recipes)
                 {
                     writer.WriteLine($"{recipe.Title},{recipe.Description},{recipe.Type}");
                 }
+
             }
         }
 
