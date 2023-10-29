@@ -119,19 +119,19 @@ namespace Uppgift_4
 
         }
 
-        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        private void textBoxSearch_TextChanged(object sender, EventArgs e) // Najah
         {
-            string searchText = textBoxSearch.Text.ToLower(); // 
+            string searchText = textBoxSearch.Text.ToLower(); // vara inte känslig om  stora boksatver
 
              dataGridView.Rows.Clear();
 
-            foreach (var recept in recipes)
+            foreach (var recipe in recipes)
             {
-                if (recept.Title.ToLower().Contains(searchText) ||
-                    recept.Type.ToLower().Contains(searchText) )
+                if (recipe.Title.ToLower().Contains(searchText) ||
+                    recipe.Type.ToLower().Contains(searchText) )
                   
                 {
-                    dataGridView.Rows.Add(recept.Title, recept.Description, recept.Type);
+                    dataGridView.Rows.Add(recipe.Title, recipe.Description, recipe.Type);
                 }
             }
         }
