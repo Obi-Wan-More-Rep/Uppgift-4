@@ -47,14 +47,14 @@ namespace Uppgift_4
 
         private void UpdateTextFile()
         {
-            Debug.WriteLine("Uppdaterar textfilen");
+            
             using (StreamWriter writer = new StreamWriter(RecipeFilePath, false))
             {
                 foreach (Recipe recipe in recipes)
                 {
                     writer.WriteLine($"{recipe.Title},{recipe.Description},{recipe.Type}");
                 }
-                Debug.WriteLine("Recept textfilen är uppdaterad.");
+                
             }
         }
 
