@@ -52,6 +52,7 @@
             buttonUpdateRecipe.TabIndex = 1;
             buttonUpdateRecipe.Text = "Update";
             buttonUpdateRecipe.UseVisualStyleBackColor = true;
+            buttonUpdateRecipe.Visible = false;
             // 
             // buttonDeleteRecipe
             // 
@@ -59,8 +60,9 @@
             buttonDeleteRecipe.Name = "buttonDeleteRecipe";
             buttonDeleteRecipe.Size = new Size(152, 54);
             buttonDeleteRecipe.TabIndex = 2;
-            buttonDeleteRecipe.Text = "Delete receipe";
+            buttonDeleteRecipe.Text = "Delete recipe";
             buttonDeleteRecipe.UseVisualStyleBackColor = true;
+            buttonDeleteRecipe.Visible = false;
             // 
             // buttonAddRecipe
             // 
@@ -70,6 +72,7 @@
             buttonAddRecipe.TabIndex = 3;
             buttonAddRecipe.Text = "Add new";
             buttonAddRecipe.UseVisualStyleBackColor = true;
+            buttonAddRecipe.Visible = false;
             // 
             // textBox1
             // 
