@@ -18,7 +18,7 @@ namespace Uppgift_4
         public bool DeleteRecipe { get; private set; }
         public bool AddRecipe { get; private set; }
 
-        public RecipeDetails()
+        public RecipeDetails() //Kevin
         {
             InitializeComponent();
         }
