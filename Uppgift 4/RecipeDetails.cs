@@ -19,10 +19,22 @@ namespace Uppgift_4
         public bool DeleteRecipe { get; private set; }
         public bool AddRecipe { get; private set; }
 
-        public RecipeDetails() //Kevin
+        // Om du klickar på ett recept i MainForm
+        public RecipeDetails(bool isAdminSignedIn, Recipe selectedRecipe) //Kevin
         {
             InitializeComponent();
-            AddNewRecipeUserInterfaceSettings();//Vanessa la till denna för att testa
+            this.isAdminSignedIn = isAdminSignedIn;
+            UppdatedRecipe = new Recipe { Title = selectedRecipe.Title, Description = selectedRecipe.Description, Type = selectedRecipe.Type};
+            this.selectedRecipe = selectedRecipe;
+            StandardUserInterfaceSettings();
+        }
+        // Om du klickar på AddNewRecipe knappen i MainForm
+        public RecipeDetails(bool isAdminSignedIn) // Kevin
+        {
+            InitializeComponent();
+            this.isAdminSignedIn=isAdminSignedIn;
+            this.selectedRecipe = new Recipe();
+            AddNewRecipeUserInterfaceSettings();
         }
 
         private void StandardUserInterfaceSettings() // Vanessa

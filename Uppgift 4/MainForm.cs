@@ -44,6 +44,16 @@ namespace Uppgift_4
                         if (!comboBox1.Items.Contains(parts[2]))
                             comboBox1.Items.Add(parts[2]);
                     }
+                    else
+                    {
+                        if (recipes.Count > 0)
+                        {
+                            // Om receptet fortsätter på nästa rad
+                            // Kolla om recipes listan är tom först så att exception inte händer
+                            int rowIndex = recipes.Count - 1;
+                            recipes[rowIndex].Description += line;
+                        }
+                    }
                 }
 
             }
@@ -79,7 +89,7 @@ namespace Uppgift_4
         // Lägg till ett nytt recept
         private void buttonAdd_Click(object sender, EventArgs e) // Vanessa & Cornelia
         {
-            RecipeDetails details = new RecipeDetails();
+            RecipeDetails details = new RecipeDetails(isAdminSignedIn);
             details.ShowDialog();
 
             if (details.AddRecipe)
