@@ -122,11 +122,6 @@ namespace Uppgift_4
         }
 
 
-        // söka på recept från recipes listan och visa i DataGridView
-        private void buttonSearch_Click(object sender, EventArgs e) // Najah
-        {
-
-        }
 
         // Öppna en ny Form när man klickar på en rad för att visa detaljerad information. Om du är inloggad som "Admin" så kan du även redigera receptet
         private void dataGridView1_SelectionChanged(object sender, EventArgs e) // Kevin & Najah
