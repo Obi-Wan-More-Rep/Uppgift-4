@@ -25,7 +25,24 @@ namespace Uppgift_4
 
         private void StandardUserInterfaceSettings() // Vanessa
         {
-
+            if (isAdminSignedIn) //kolla om admin är inloggad
+            {
+                buttonUpdateRecipe.Visible = true;
+                buttonDeleteRecipe.Visible = true;
+            }
+            //labels ser mindre ut som labels
+            textBoxTitle.BorderStyle = BorderStyle.None;
+            textBoxType.BorderStyle = BorderStyle.None;
+            richTxtDescription.BorderStyle = BorderStyle.None;
+            //samma färg på backcolor som bakrunden av formen
+            textBoxTitle.BackColor = this.BackColor;
+            textBoxType.BackColor = this.BackColor;
+            richTxtDescription.BackColor = this.BackColor;
+            //populera textrutorna med receptet
+            textBoxTitle.Text = selectedRecipe.Title;
+            textBoxType.Text = selectedRecipe.Type;
+            //hanterar rich textbox för att visa flera rader korrekt
+            richTxtDescription.Lines = selectedRecipe.Description.Split(@"\n");
         }
 
         private void AddNewRecipeUserInterfaceSettings()
