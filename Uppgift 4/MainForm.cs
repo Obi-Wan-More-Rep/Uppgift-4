@@ -60,8 +60,20 @@ namespace Uppgift_4
         }
 
         // Lägga till admins i admins listan
-        private void LoadAdmin()
+        private void LoadAdmin() // Najah
         {
+            using (StreamReader reader = new StreamReader(AdminFilePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(',');
+                    if (parts.Length == 2)
+                    {
+                        admins.Add(new Admin { Username = parts[0], Password = parts[1] });
+                    }
+                }
+            }
 
         }
 
