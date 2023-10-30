@@ -40,8 +40,12 @@ namespace Uppgift_4
                     {
                         recipes.Add(new Recipe { Title = parts[0], Description = parts[1], Type = parts[2] });
                         dataGridView.Rows.Add(parts[0]);
+                        
+                        if (!comboBox1.Items.Contains(parts[2]))
+                        comboBox1.Items.Add(parts[2]);
                     }
                 }
+               
             }
         }
 
