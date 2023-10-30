@@ -9,16 +9,17 @@ namespace Uppgift_4
     {
         public List<Recipe> recipes { get; set; } = new List<Recipe>();
         public List<Admin> admins { get; set; } = new List<Admin>();
-        private const string AdminFilePath = @"admins.txt";
+        private const string AdminFilePath = @"Admins.txt";
         private const string RecipeFilePath = @"recipes.txt";
-        private bool isAdminSignedIn { get; set; } = true; // skapa en Login form, Kamal
+        private bool isAdminSignedIn { get; set; } // skapa en Login form, Kamal
 
 
         public MainForm()
         {
             InitializeComponent();
-            //LoadAdmin();
+            LoadAdmin();
             LoadRecipes();
+
         }
         // Lägga till recept i recipe listan och i DataGridView
         private void LoadRecipes() // Kevin och Najah
@@ -84,7 +85,6 @@ namespace Uppgift_4
         }
 
 
-
         //Uppdatera receptet i textfilen
         private void UpdateTextFile() // Kevin
         {
@@ -117,37 +117,32 @@ namespace Uppgift_4
             }
         }
 
+
         private void buttonSignIn_Click(object sender, EventArgs e) // Kamal
         {
+            FrmLogin frmLogin = new FrmLogin(admins);
+            frmLogin.ShowDialog();
+            isAdminSignedIn = frmLogin.IsLoginSuccessful;
+
+            if (isAdminSignedIn)
+            {
+                buttonSignIn.Visible = false;
+                buttonSignOut.Visible = true;
+            }
 
         }
 
         private void buttonSignOut_Click(object sender, EventArgs e) // Kamal
         {
-
+            isAdminSignedIn = false;
+            buttonSignIn.Visible = true;
+            buttonSignOut.Visible = false;
         }
 
         // Ta bort markerad recipe
         private void buttonDelete_Click(object sender, EventArgs e) // Simon
         {
             // Ta bort receptet från listan
-        }
-
-
-
-        // Öppna en ny Form när man klickar på en rad för att visa detaljerad information. Om du är inloggad som "Admin" så kan du även redigera receptet
-
-
-        // Logga in som Admin
-        private void SignInButton_Click(object sender, EventArgs e) // Kamal
-        {
-
-        }
-
-        // Logga ut
-        private void signOutButton_Click(object sender, EventArgs e) // Kamal
-        {
-
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e) // Najah
@@ -219,6 +214,11 @@ namespace Uppgift_4
                     }
                 }
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
