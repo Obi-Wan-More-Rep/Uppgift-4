@@ -38,19 +38,20 @@
             // 
             // richTxtDescription
             // 
-            richTxtDescription.Location = new Point(38, 91);
-            richTxtDescription.Margin = new Padding(3, 2, 3, 2);
+            richTxtDescription.Location = new Point(54, 152);
+            richTxtDescription.Margin = new Padding(4, 3, 4, 3);
             richTxtDescription.Name = "richTxtDescription";
-            richTxtDescription.Size = new Size(395, 215);
+            richTxtDescription.Size = new Size(563, 356);
             richTxtDescription.TabIndex = 0;
             richTxtDescription.Text = "";
+            richTxtDescription.DoubleClick += TextBox_DoubleClick;
             // 
             // buttonUpdateRecipe
             // 
-            buttonUpdateRecipe.Location = new Point(508, 112);
-            buttonUpdateRecipe.Margin = new Padding(3, 2, 3, 2);
+            buttonUpdateRecipe.Location = new Point(726, 187);
+            buttonUpdateRecipe.Margin = new Padding(4, 3, 4, 3);
             buttonUpdateRecipe.Name = "buttonUpdateRecipe";
-            buttonUpdateRecipe.Size = new Size(133, 36);
+            buttonUpdateRecipe.Size = new Size(190, 60);
             buttonUpdateRecipe.TabIndex = 1;
             buttonUpdateRecipe.Text = "Update";
             buttonUpdateRecipe.UseVisualStyleBackColor = true;
@@ -59,10 +60,10 @@
             // 
             // buttonDeleteRecipe
             // 
-            buttonDeleteRecipe.Location = new Point(508, 178);
-            buttonDeleteRecipe.Margin = new Padding(3, 2, 3, 2);
+            buttonDeleteRecipe.Location = new Point(726, 297);
+            buttonDeleteRecipe.Margin = new Padding(4, 3, 4, 3);
             buttonDeleteRecipe.Name = "buttonDeleteRecipe";
-            buttonDeleteRecipe.Size = new Size(133, 40);
+            buttonDeleteRecipe.Size = new Size(190, 67);
             buttonDeleteRecipe.TabIndex = 2;
             buttonDeleteRecipe.Text = "Delete recipe";
             buttonDeleteRecipe.UseVisualStyleBackColor = true;
@@ -71,10 +72,10 @@
             // 
             // buttonAddRecipe
             // 
-            buttonAddRecipe.Location = new Point(508, 256);
-            buttonAddRecipe.Margin = new Padding(3, 2, 3, 2);
+            buttonAddRecipe.Location = new Point(726, 427);
+            buttonAddRecipe.Margin = new Padding(4, 3, 4, 3);
             buttonAddRecipe.Name = "buttonAddRecipe";
-            buttonAddRecipe.Size = new Size(133, 38);
+            buttonAddRecipe.Size = new Size(190, 63);
             buttonAddRecipe.TabIndex = 3;
             buttonAddRecipe.Text = "Add new";
             buttonAddRecipe.UseVisualStyleBackColor = true;
@@ -83,32 +84,34 @@
             // 
             // textBoxTitle
             // 
-            textBoxTitle.Location = new Point(38, 43);
-            textBoxTitle.Margin = new Padding(3, 2, 3, 2);
+            textBoxTitle.Location = new Point(54, 72);
+            textBoxTitle.Margin = new Padding(4, 3, 4, 3);
             textBoxTitle.Name = "textBoxTitle";
-            textBoxTitle.Size = new Size(215, 23);
+            textBoxTitle.Size = new Size(305, 31);
             textBoxTitle.TabIndex = 4;
+            textBoxTitle.DoubleClick += TextBox_DoubleClick;
             // 
             // textBoxType
             // 
-            textBoxType.Location = new Point(38, 68);
-            textBoxType.Margin = new Padding(3, 2, 3, 2);
+            textBoxType.Location = new Point(54, 113);
+            textBoxType.Margin = new Padding(4, 3, 4, 3);
             textBoxType.Name = "textBoxType";
-            textBoxType.Size = new Size(110, 23);
+            textBoxType.Size = new Size(155, 31);
             textBoxType.TabIndex = 5;
+            textBoxType.DoubleClick += TextBox_DoubleClick;
             // 
             // RecipeDetails
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(1000, 563);
             Controls.Add(textBoxType);
             Controls.Add(textBoxTitle);
             Controls.Add(buttonAddRecipe);
             Controls.Add(buttonDeleteRecipe);
             Controls.Add(buttonUpdateRecipe);
             Controls.Add(richTxtDescription);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "RecipeDetails";
             Text = "RecipeDetails";
             ResumeLayout(false);
