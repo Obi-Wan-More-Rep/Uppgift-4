@@ -47,7 +47,17 @@ namespace Uppgift_4
 
         private void AddNewRecipeUserInterfaceSettings()
         {
+            //ger tillgång till att ändra texten i textrutorna
+            textBoxTitle.ReadOnly = false;
+            textBoxType.ReadOnly = false;
+            richTxtDescription.ReadOnly = false;
 
+            buttonAddRecipe.Visible = true;
+
+            //AVVAKTA MED DENNA
+            //textBoxTitle.BorderStyle = BorderStyle.None;
+            //textBoxType.BorderStyle = BorderStyle.None;
+            //richTxtDescription.BorderStyle = BorderStyle.None;
         }
 
         private void buttonAddRecipe_Click(object sender, EventArgs e) //Cornelia
