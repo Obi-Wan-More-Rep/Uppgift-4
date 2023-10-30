@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Uppgift_4
 {
@@ -59,6 +60,27 @@ namespace Uppgift_4
             textBoxTitle.BorderStyle = BorderStyle.None;
             textBoxType.BorderStyle = BorderStyle.None;
             richTxtDescription.BorderStyle = BorderStyle.None;
+        }
+
+        private void TextBox_DoubleClick(object sender, EventArgs e)//Vanessa har tillfällig prov period på denna
+        {
+            if (isAdminSignedIn)
+            {
+                TextBox textBox = sender as TextBox;
+                if (textBox != null)
+                {
+                    textBox.ReadOnly = !textBox.ReadOnly;
+
+                    if (textBox.BackColor == this.BackColor)
+                    {
+                        textBox.BackColor = Color.White;
+                    }
+                    else
+                    {
+                        textBox.BackColor = this.BackColor;
+                    }
+                }
+            }
         }
 
         private void buttonAddRecipe_Click(object sender, EventArgs e) //Cornelia
