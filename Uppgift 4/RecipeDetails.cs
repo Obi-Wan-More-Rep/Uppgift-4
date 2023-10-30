@@ -14,13 +14,14 @@ namespace Uppgift_4
     {
         private Recipe selectedRecipe { get; set; }
         public Recipe UppdatedRecipe { get; set; }
-        private bool isAdminSignedIn { get; set; }
+        private bool isAdminSignedIn { get; set; } 
         public bool DeleteRecipe { get; private set; }
         public bool AddRecipe { get; private set; }
 
         public RecipeDetails() //Kevin
         {
             InitializeComponent();
+            AddNewRecipeUserInterfaceSettings();//Vanessa la till denna för att testa
         }
 
         private void StandardUserInterfaceSettings() // Vanessa
@@ -54,10 +55,10 @@ namespace Uppgift_4
 
             buttonAddRecipe.Visible = true;
 
-            //AVVAKTA MED DENNA
-            //textBoxTitle.BorderStyle = BorderStyle.None;
-            //textBoxType.BorderStyle = BorderStyle.None;
-            //richTxtDescription.BorderStyle = BorderStyle.None;
+            //AVVAKTA MED DENNA kolla på alt
+            textBoxTitle.BorderStyle = BorderStyle.None;
+            textBoxType.BorderStyle = BorderStyle.None;
+            richTxtDescription.BorderStyle = BorderStyle.None;
         }
 
         private void buttonAddRecipe_Click(object sender, EventArgs e) //Cornelia
