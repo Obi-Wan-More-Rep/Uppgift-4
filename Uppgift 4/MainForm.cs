@@ -79,7 +79,20 @@ namespace Uppgift_4
         // Lägg till ett nytt recept
         private void buttonAdd_Click(object sender, EventArgs e) // Vanessa & Cornelia
         {
+            RecipeDetails details = new RecipeDetails();
+            details.ShowDialog();
 
+            if (details.AddRecipe)
+            {
+                Recipe newRecipe = details.UppdatedRecipe;
+                //om man skrivit något på det nya receptet kommer den skapa ett nytt recept
+                if (newRecipe != null)
+                {
+                    recipes.Add(newRecipe);
+                    dataGridView.Rows.Add(newRecipe.Title); //sparar endast titeln till datagriden
+                    UpdateTextFile(); //Lägger nya receptet till textfilen
+                }
+            }
         }
 
         private void buttonSignIn_Click(object sender, EventArgs e) // Kamal
