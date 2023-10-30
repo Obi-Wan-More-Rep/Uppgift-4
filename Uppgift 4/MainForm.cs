@@ -40,12 +40,12 @@ namespace Uppgift_4
                     {
                         recipes.Add(new Recipe { Title = parts[0], Description = parts[1], Type = parts[2] });
                         dataGridView.Rows.Add(parts[0]);
-                        
+
                         if (!comboBox1.Items.Contains(parts[2]))
-                        comboBox1.Items.Add(parts[2]);
+                            comboBox1.Items.Add(parts[2]);
                     }
                 }
-               
+
             }
         }
 
@@ -138,6 +138,27 @@ namespace Uppgift_4
                     dataGridView.Rows.Add(recipe.Title, recipe.Description, recipe.Type);
                 }
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
+        {
+            string selectedmatype = comboBox1.SelectedItem.ToString();
+            if (selectedmatype != null)
+            {
+                List<Recipe> selectedtype = recipes.Where(recipe => recipe.Type == selectedmatype).ToList();
+                dataGridView.Rows.Clear();
+                foreach (var recipe in selectedtype)
+                {
+                    dataGridView.Rows.Add(recipe.Title);
+                }
+            }
+        }
+
+        private void MainForm_MouseClick(object sender, MouseEventArgs e) //Najah
+        {
+            dataGridView.Rows.Clear();
+            LoadRecipes();
+
         }
     }
 }
