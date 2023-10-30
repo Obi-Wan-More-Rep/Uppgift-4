@@ -143,7 +143,7 @@
             Controls.Add(dataGridView);
             Name = "MainForm";
             Text = "International Food AB";
-            MouseClick += MainForm_MouseClick;
+           
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();

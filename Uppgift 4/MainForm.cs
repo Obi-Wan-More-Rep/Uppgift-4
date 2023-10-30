@@ -172,11 +172,5 @@ namespace Uppgift_4
             }
         }
 
-        private void MainForm_MouseClick(object sender, MouseEventArgs e) //Najah
-        {
-            dataGridView.Rows.Clear();
-            LoadRecipes();
-
-        }
     }
 }
