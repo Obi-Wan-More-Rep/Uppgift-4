@@ -136,10 +136,7 @@ namespace Uppgift_4
 
 
         // Öppna en ny Form när man klickar på en rad för att visa detaljerad information. Om du är inloggad som "Admin" så kan du även redigera receptet
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e) // Kevin & Najah
-        {
 
-        }
 
         // Logga in som Admin
         private void SignInButton_Click(object sender, EventArgs e) // Kamal
@@ -184,5 +181,44 @@ namespace Uppgift_4
             }
         }
 
+        private void dataGridView_SelectionChanged(object sender, EventArgs e) // Kevin
+        {
+            if (dataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
+                string selectedTitle = selectedRow.Cells[0].Value.ToString();
+                Recipe selectedRecipe = recipes.FirstOrDefault(recipe => recipe.Title == selectedTitle);
+
+                // Om selectedRecipe inte returnerar null
+                if (selectedRecipe != null)
+                {
+                    RecipeDetails detailsForm = new RecipeDetails(isAdminSignedIn, selectedRecipe);
+                    detailsForm.ShowDialog();
+
+                    Recipe updatedRecipe = detailsForm.UppdatedRecipe;
+
+                    if (detailsForm.DeleteRecipe)
+                    {
+                        recipes.Remove(selectedRecipe);
+                        UpdateTextFile();
+
+                        int rowIndex = selectedRow.Index;
+                        dataGridView.Rows.RemoveAt(rowIndex);
+                    }
+
+                    else if (updatedRecipe.Title != selectedRecipe.Title || updatedRecipe.Description != selectedRecipe.Description || updatedRecipe.Type != selectedRecipe.Type)
+                    {
+                        recipes.Remove(selectedRecipe);
+                        recipes.Add(updatedRecipe);
+
+                        UpdateTextFile();
+
+                        // Uppdaterar DataGridView utan att rensa hela den och läsa om den. Detta fixar buggen med att recept duppliceras
+                        int rowIndex = selectedRow.Index;
+                        dataGridView.Rows[rowIndex].Cells[0].Value = updatedRecipe.Title;
+                    }
+                }
+            }
+        }
     }
 }
