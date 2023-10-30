@@ -21,7 +21,7 @@ namespace Uppgift_4
             LoadRecipes();
         }
         // Lägga till recept i recipe listan och i DataGridView
-        private void LoadRecipes()
+        private void LoadRecipes() // Kevin och Najah
         {
             if (!File.Exists(RecipeFilePath))
             {
@@ -38,11 +38,11 @@ namespace Uppgift_4
                     string[] parts = line.Split(',');
                     if (parts.Length == 3)
                     {
-                        recipes.Add(new Recipe { Title = parts[0], Description = parts[1], Type = parts[2] });
+                        recipes.Add(new Recipe { Title = parts[0], Type = parts[1], Description = parts[2] });
                         dataGridView.Rows.Add(parts[0]);
 
-                        if (!comboBox1.Items.Contains(parts[2]))
-                            comboBox1.Items.Add(parts[2]);
+                        if (!comboBox1.Items.Contains(parts[1]))
+                            comboBox1.Items.Add(parts[1]);
                     }
                     else
                     {
@@ -80,7 +80,7 @@ namespace Uppgift_4
             {
                 foreach (Recipe recipe in recipes)
                 {
-                    writer.WriteLine($"{recipe.Title},{recipe.Description},{recipe.Type}");
+                    writer.WriteLine($"{recipe.Title},{recipe.Type},{recipe.Description}");
                 }
 
             }
