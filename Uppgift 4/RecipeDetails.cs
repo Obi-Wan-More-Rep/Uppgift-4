@@ -70,7 +70,8 @@ namespace Uppgift_4
                 Type = textBoxType.Text,
                 Description = String.Join(@"\n", richTxtDescription.Lines)
             };
-
+            //Stänger formen efter den sparat 
+            this.Close();
         }
 
         private void buttonDeleteRecipe_Click(object sender, EventArgs e)
