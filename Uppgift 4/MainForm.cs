@@ -128,6 +128,8 @@ namespace Uppgift_4
             {
                 buttonSignIn.Visible = false;
                 buttonSignOut.Visible = true;
+                buttonAdd.Visible = true;
+                buttonDelete.Visible = true;
             }
 
         }
@@ -137,6 +139,8 @@ namespace Uppgift_4
             isAdminSignedIn = false;
             buttonSignIn.Visible = true;
             buttonSignOut.Visible = false;
+            buttonAdd.Visible = false;
+            buttonDelete.Visible = false;
         }
 
         // Ta bort markerad recipe
