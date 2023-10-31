@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Drawing.Text;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using Image = System.Drawing.Image;
 
 namespace Uppgift_4
 {
@@ -41,6 +42,13 @@ namespace Uppgift_4
                     {
                         recipes.Add(new Recipe { Title = parts[0], Type = parts[1], Description = parts[2] });
                         dataGridView.Rows.Add(parts[0]);
+                        string imagePath = $@"Bilder\{parts[0]}.jpg";
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            int rowIdx = dataGridView.Rows.Count - 1;
+                            Image image = Image.FromFile(imagePath);
+                            dataGridView.Rows[rowIdx].Cells[1].Value = image;
+                        }
 
                         if (!comboBox1.Items.Contains(parts[1]))
                             comboBox1.Items.Add(parts[1]);
