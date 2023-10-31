@@ -24,7 +24,7 @@ namespace Uppgift_4
         {
             InitializeComponent();
             this.isAdminSignedIn = isAdminSignedIn;
-            UppdatedRecipe = new Recipe { Title = selectedRecipe.Title, Description = selectedRecipe.Description, Type = selectedRecipe.Type};
+            UppdatedRecipe = new Recipe { Title = selectedRecipe.Title, Description = selectedRecipe.Description, Type = selectedRecipe.Type };
             this.selectedRecipe = selectedRecipe;
             StandardUserInterfaceSettings();
         }
@@ -32,7 +32,7 @@ namespace Uppgift_4
         public RecipeDetails(bool isAdminSignedIn) // Kevin
         {
             InitializeComponent();
-            this.isAdminSignedIn=isAdminSignedIn;
+            this.isAdminSignedIn = isAdminSignedIn;
             this.selectedRecipe = new Recipe();
             AddNewRecipeUserInterfaceSettings();
         }
@@ -79,18 +79,31 @@ namespace Uppgift_4
             if (isAdminSignedIn)
             {
                 TextBox textBox = sender as TextBox;
-                if (textBox != null)
-                {
-                    textBox.ReadOnly = !textBox.ReadOnly;
+                textBox.ReadOnly = !textBox.ReadOnly;
 
-                    if (textBox.BackColor == this.BackColor)
-                    {
-                        textBox.BackColor = Color.White;
-                    }
-                    else
-                    {
-                        textBox.BackColor = this.BackColor;
-                    }
+                if (textBox.BackColor == this.BackColor)
+                {
+                    textBox.BackColor = Color.White;
+                }
+                else
+                {
+                    textBox.BackColor = this.BackColor;
+                }
+            }
+        }
+        private void richTxtDescription_DoubleClick(object sender, EventArgs e)
+        {
+            if (isAdminSignedIn)
+            {
+                richTxtDescription.ReadOnly = !richTxtDescription.ReadOnly;
+
+                if (richTxtDescription.BackColor == this.BackColor)
+                {
+                    richTxtDescription.BackColor = Color.White;
+                }
+                else
+                {
+                    richTxtDescription.BackColor = this.BackColor;
                 }
             }
         }

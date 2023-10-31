@@ -38,13 +38,14 @@
             // 
             // richTxtDescription
             // 
-            richTxtDescription.Location = new Point(54, 152);
+            richTxtDescription.Location = new Point(54, 163);
             richTxtDescription.Margin = new Padding(4, 3, 4, 3);
             richTxtDescription.Name = "richTxtDescription";
+            richTxtDescription.ReadOnly = true;
             richTxtDescription.Size = new Size(563, 356);
             richTxtDescription.TabIndex = 0;
             richTxtDescription.Text = "";
-            richTxtDescription.DoubleClick += TextBox_DoubleClick;
+            richTxtDescription.DoubleClick += richTxtDescription_DoubleClick;
             // 
             // buttonUpdateRecipe
             // 
@@ -87,6 +88,7 @@
             textBoxTitle.Location = new Point(54, 72);
             textBoxTitle.Margin = new Padding(4, 3, 4, 3);
             textBoxTitle.Name = "textBoxTitle";
+            textBoxTitle.ReadOnly = true;
             textBoxTitle.Size = new Size(305, 31);
             textBoxTitle.TabIndex = 4;
             textBoxTitle.DoubleClick += TextBox_DoubleClick;
@@ -96,6 +98,7 @@
             textBoxType.Location = new Point(54, 113);
             textBoxType.Margin = new Padding(4, 3, 4, 3);
             textBoxType.Name = "textBoxType";
+            textBoxType.ReadOnly = true;
             textBoxType.Size = new Size(155, 31);
             textBoxType.TabIndex = 5;
             textBoxType.DoubleClick += TextBox_DoubleClick;
