@@ -8,98 +8,42 @@ namespace Uppgift_4
 {
     public partial class MainForm : Form
     {
-        public List<Recipe> recipes { get; set; } = new List<Recipe>();
-        public List<Admin> admins { get; set; } = new List<Admin>();
-        private const string AdminFilePath = @"../../../Admin/Admins.txt";
-        private const string RecipeFilePath = $@"../../../recipe/recipe.txt";
-
-        private bool isAdminSignedIn { get; set; } // skapa en Login form, Kamal
+        private DataHandler dataHandler { get; set; } = new DataHandler();
+        private bool isAdminSignedIn { get; set; } = true;
 
 
         public MainForm()
         {
             InitializeComponent();
-            LoadAdmin();
-            LoadRecipes();
+            LoadRecipesIntoDataGridView();
 
         }
-        // Lägga till recept i recipe listan och i DataGridView
-        private void LoadRecipes() // Kevin och Najah
+
+
+        private void LoadRecipesIntoDataGridView()
         {
-            if (!File.Exists(RecipeFilePath))
+            List<Recipe> recipes = dataHandler.GetRecipes(); // få en lista av recepten från DataHandler klassen
+            foreach (Recipe recipe in recipes)
             {
-                // Create a new empty ".txt" file
-                File.Create(RecipeFilePath).Close();
-            }
-
-            using (StreamReader reader = new StreamReader(RecipeFilePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] parts = line.Split(',');
-                    if (parts.Length == 3)
-                    {
-                        recipes.Add(new Recipe { Title = parts[0], Type = parts[1], Description = parts[2] });
-                        dataGridView.Rows.Add(parts[0]);
-                        string imagePath = $@"../../../Bilder/{parts[0]}.jpg";
-
-                        if (System.IO.File.Exists(imagePath))
-                        {
-                            int rowIdx = dataGridView.Rows.Count - 1;
-                            Image image = Image.FromFile(imagePath);
-                            dataGridView.Rows[rowIdx].Cells[1].Value = image;
-                        }
-
-                        if (!comboBox1.Items.Contains(parts[1]))
-                            comboBox1.Items.Add(parts[1]);
-                    }
-                    else
-                    {
-                        if (recipes.Count > 0)
-                        {
-                            // Om receptet fortsätter på nästa rad
-                            // Kolla om recipes listan är tom först så att exception inte händer
-                            int rowIndex = recipes.Count - 1;
-                            recipes[rowIndex].Description += line;
-                        }
-                    }
-                }
-
+                dataGridView.Rows.Add(recipe.Title);
             }
         }
 
-        // Lägga till admins i admins listan
-        private void LoadAdmin() // Najah
-        {
-            using (StreamReader reader = new StreamReader(AdminFilePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] parts = line.Split(',');
-                    if (parts.Length == 2)
-                    {
-                        admins.Add(new Admin { Username = parts[0], Password = parts[1] });
-                    }
-                }
-            }
 
-        }
-        public void TaBort()
-        {
-            var index = dataGridView.SelectedCells[0];
-            if (index != null)
-                recipes.RemoveAt(index.RowIndex);
-            dataGridView.Rows.RemoveAt(index.RowIndex);
-            StreamWriter sw = new StreamWriter(RecipeFilePath);
-            foreach (var s in recipes)
-            {
-                sw.WriteLine(s.Title + "," + s.Description + "," + s.Type);
+        //public void TaBort()
+        //{
+        //    var index = dataGridView.SelectedCells[0];
+        //    if (index != null)
+        //        recipes.RemoveAt(index.RowIndex);
+        //    dataGridView.Rows.RemoveAt(index.RowIndex);
+        //    StreamWriter sw = new StreamWriter(RecipeFilePath);
+        //    foreach (var s in recipes)
+        //    {
+        //        sw.WriteLine(s.Title + "," + s.Description + "," + s.Type);
 
-            }
-            sw.Close();
-        }
+        //    }
+        //    sw.Close();
+        //}
 
 
         // Nollställa DataGridView
@@ -109,42 +53,30 @@ namespace Uppgift_4
         }
 
 
-        //Uppdatera receptet i textfilen
-        private void UpdateTextFile() // Kevin
+        // söka på recept från recipes listan och visa i DataGridView
+        private void textBoxSearch_TextChanged(object sender, EventArgs e) // Najah
         {
-            using (StreamWriter writer = new StreamWriter(RecipeFilePath, false))
+            string searchText = textBoxSearch.Text.ToLower(); // vara inte känslig om  stora boksatver
+            dataGridView.Rows.Clear();
+
+            List<Recipe> recipes = dataHandler.GetRecipes();
+            foreach (var recipe in recipes)
             {
-                foreach (Recipe recipe in recipes)
+                if (recipe.Title.ToLower().Contains(searchText) ||
+                    recipe.Type.ToLower().Contains(searchText))
+
                 {
-                    writer.WriteLine($"{recipe.Title},{recipe.Type},{recipe.Description}");
-                }
-
-            }
-        }
-
-        // Lägg till ett nytt recept
-        private void buttonAdd_Click(object sender, EventArgs e) // Vanessa & Cornelia
-        {
-            RecipeDetails details = new RecipeDetails(isAdminSignedIn);
-            details.ShowDialog();
-
-            if (details.AddRecipe)
-            {
-                Recipe newRecipe = details.UppdatedRecipe;
-                //om man skrivit något på det nya receptet kommer den skapa ett nytt recept
-                if (newRecipe != null)
-                {
-                    recipes.Add(newRecipe);
-                    dataGridView.Rows.Add(newRecipe.Title); //sparar endast titeln till datagriden
-                    UpdateTextFile(); //Lägger nya receptet till textfilen
+                    dataGridView.Rows.Add(recipe.Title, recipe.Description, recipe.Type);
                 }
             }
         }
+
+
 
 
         private void buttonSignIn_Click(object sender, EventArgs e) // Kamal
         {
-            FrmLogin frmLogin = new FrmLogin(admins);
+            FrmLogin frmLogin = new FrmLogin(dataHandler.admins);
             frmLogin.ShowDialog();
             isAdminSignedIn = frmLogin.IsLoginSuccessful;
 
@@ -171,73 +103,66 @@ namespace Uppgift_4
         private void buttonDelete_Click(object sender, EventArgs e) // Simon
         {
             // Ta bort receptet från listan
-            TaBort();
+            //TaBort();
         }
 
-        private void textBoxSearch_TextChanged(object sender, EventArgs e) // Najah
-        {
-            string searchText = textBoxSearch.Text.ToLower(); // vara inte känslig om  stora boksatver
 
-            dataGridView.Rows.Clear();
 
-            foreach (var recipe in recipes)
-            {
-                if (recipe.Title.ToLower().Contains(searchText) ||
-                    recipe.Type.ToLower().Contains(searchText))
+        //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
+        //{
+        //    string selectedmatype = comboBox1.SelectedItem.ToString();
+        //    if (selectedmatype != null)
+        //    {
+        //        List<Recipe> selectedtype = recipes.Where(recipe => recipe.Type == selectedmatype).ToList();
+        //        dataGridView.Rows.Clear();
+        //        foreach (var recipe in selectedtype)
+        //        {
+        //            dataGridView.Rows.Add(recipe.Title);
+        //        }
+        //    }
+        //}
 
-                {
-                    dataGridView.Rows.Add(recipe.Title, recipe.Description, recipe.Type);
-                }
-            }
-        }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
-        {
-            string selectedmatype = comboBox1.SelectedItem.ToString();
-            if (selectedmatype != null)
-            {
-                List<Recipe> selectedtype = recipes.Where(recipe => recipe.Type == selectedmatype).ToList();
-                dataGridView.Rows.Clear();
-                foreach (var recipe in selectedtype)
-                {
-                    dataGridView.Rows.Add(recipe.Title);
-                }
-            }
-        }
 
+        // Öppna en ny Form när man klickar på en rad för att visa detaljerad information. Om du är inloggad som "Admin" så kan du även redigera receptet
         private void dataGridView_SelectionChanged(object sender, EventArgs e) // Kevin
         {
             if (dataGridView.SelectedRows.Count > 0)
             {
-                DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
-                string selectedTitle = selectedRow.Cells[0].Value.ToString();
-                Recipe selectedRecipe = recipes.FirstOrDefault(recipe => recipe.Title == selectedTitle);
+                DataGridViewRow selectedRow = dataGridView.SelectedRows[0]; // Sista valda raden
+                string selectedTitle = selectedRow.Cells[0].Value.ToString(); // namnet på receptet
+                Recipe selectedRecipe = dataHandler.GetRecipes().FirstOrDefault(recipe => recipe.Title == selectedTitle); // Sök efter alla recept till du hittar ett med matchande namn
 
-                // Om selectedRecipe inte returnerar null
+                // Om det finns ett recept i listan som har samma namn som selectedRecipe
                 if (selectedRecipe != null)
                 {
+                    // Öppna en instans av Formen detailsForm
                     RecipeDetails detailsForm = new RecipeDetails(isAdminSignedIn, selectedRecipe);
                     detailsForm.ShowDialog();
 
                     Recipe updatedRecipe = detailsForm.UppdatedRecipe;
 
+                    // Om du klickar på att ta bort receptet
                     if (detailsForm.DeleteRecipe)
                     {
-                        recipes.Remove(selectedRecipe);
-                        UpdateTextFile();
+                        // Ta bort receptet från listan
+                        dataHandler.RemoveRecipe(selectedRecipe);
 
+                        // Ta bort receptet från dataGridView
                         int rowIndex = selectedRow.Index;
                         dataGridView.Rows.RemoveAt(rowIndex);
                     }
 
+                    // Om du klickar på att uppdatera receptet och du har gjort ändringar
                     else if (updatedRecipe.Title != selectedRecipe.Title || updatedRecipe.Description != selectedRecipe.Description || updatedRecipe.Type != selectedRecipe.Type)
                     {
-                        recipes.Remove(selectedRecipe);
-                        recipes.Add(updatedRecipe);
+                        // Ta bort gamla receptet från listan
+                        dataHandler.RemoveRecipe(selectedRecipe);
 
-                        UpdateTextFile();
+                        // Lägger till uppdaterade receptet i listan
+                        dataHandler.AddRecipe(updatedRecipe);
 
-                        // Uppdaterar DataGridView utan att rensa hela den och läsa om den. Detta fixar buggen med att recept duppliceras
+                        // Uppdaterar dataGridView utan att rensa hela den och läsa om den. Detta fixar buggen med att recept duppliceras
                         int rowIndex = selectedRow.Index;
                         dataGridView.Rows[rowIndex].Cells[0].Value = updatedRecipe.Title;
                     }

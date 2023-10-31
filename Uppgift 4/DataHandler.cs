@@ -11,8 +11,8 @@ namespace Uppgift_4
     {
         public List<Recipe> recipes { get; set; } = new List<Recipe>();
         public List<Admin> admins { get; set; } = new List<Admin>();
-        private const string RecipeFilePath = @"recipes.txt";
-        private const string AdminFilePath = @"admins.txt";
+        private const string RecipeFilePath = $@"../../../recipe/recipe.txt";
+        private const string AdminFilePath = @"../../../Admin/Admins.txt";
 
         public DataHandler()
         {
