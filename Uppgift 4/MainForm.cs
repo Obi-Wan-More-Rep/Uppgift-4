@@ -87,6 +87,21 @@ namespace Uppgift_4
             }
 
         }
+        public void TaBort()
+        {
+            var index = dataGridView.SelectedCells[0];
+            if (index != null)
+                recipes.RemoveAt(index.RowIndex);
+            dataGridView.Rows.RemoveAt(index.RowIndex);
+            StreamWriter sw = new StreamWriter(RecipeFilePath);
+            foreach (var s in recipes)
+            {
+                sw.WriteLine(s.Title + "," + s.Description + "," + s.Type);
+
+            }
+            sw.Close();
+        }
+
 
         // Nollställa DataGridView
         private void ResetDataGridView()
@@ -157,6 +172,7 @@ namespace Uppgift_4
         private void buttonDelete_Click(object sender, EventArgs e) // Simon
         {
             // Ta bort receptet från listan
+            TaBort();
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e) // Najah
