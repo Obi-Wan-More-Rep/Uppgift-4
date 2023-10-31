@@ -1,2 +1,3 @@
 köttbullar,kött,steka tillsammans
 fiskpinnar,fisk,djfdjfkdf
+kladkakka,desert,ägg\nsmör
