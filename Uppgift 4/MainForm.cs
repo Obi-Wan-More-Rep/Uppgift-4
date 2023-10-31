@@ -34,10 +34,6 @@ namespace Uppgift_4
                 {
                     dataGridView.Rows.Add(recipe.Title);
                 }
-
-
-                    
-
             }
         }
 
@@ -95,8 +91,18 @@ namespace Uppgift_4
                 //om man skrivit något på det nya receptet kommer den skapa ett nytt recept
                 if (newRecipe != null)
                 {
-                    dataHandler.AddRecipe(newRecipe); // Lägg till ett nytt recept i listan och textfilen
-                    dataGridView.Rows.Add(newRecipe.Title); // Lägg till receptet i dataGridView1
+                    //dataHandler.AddRecipe(newRecipe); // Lägg till ett nytt recept i listan och textfilen             Gamal kod
+                    //dataGridView.Rows.Add(newRecipe.Title,); // Lägg till receptet i dataGridView1                    Gamal kod
+
+                    if (File.Exists(newRecipe.PiImage)) //Kevin, La till if statements
+                    {
+                        Image image = Image.FromFile(newRecipe.PiImage);
+                        dataGridView.Rows.Add(newRecipe.Title, image);
+                    }
+                    else
+                    {
+                        dataGridView.Rows.Add(newRecipe.Title);
+                    }
                 }
             }
         }

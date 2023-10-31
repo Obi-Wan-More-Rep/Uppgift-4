@@ -24,7 +24,7 @@ namespace Uppgift_4
         {
             InitializeComponent();
             this.isAdminSignedIn = isAdminSignedIn;
-            UppdatedRecipe = new Recipe { Title = selectedRecipe.Title, Description = selectedRecipe.Description, Type = selectedRecipe.Type };
+            UppdatedRecipe = new Recipe { Title = selectedRecipe.Title, Type = selectedRecipe.Type, PiImage = selectedRecipe.PiImage, Description = selectedRecipe.Description };
             this.selectedRecipe = selectedRecipe;
             StandardUserInterfaceSettings();
         }
@@ -108,6 +108,7 @@ namespace Uppgift_4
             }
         }
 
+        // Lägg till ett recept
         private void buttonAddRecipe_Click(object sender, EventArgs e) //Cornelia
         {
             AddRecipe = true;
@@ -115,20 +116,31 @@ namespace Uppgift_4
             {
                 Title = textBoxTitle.Text,
                 Type = textBoxType.Text,
+
                 Description = String.Join(@"\n", richTxtDescription.Lines)
             };
             //Stänger formen efter den sparat 
             this.Close();
         }
 
-        private void buttonDeleteRecipe_Click(object sender, EventArgs e)
+        // Ta bort ett recept
+        private void buttonDeleteRecipe_Click(object sender, EventArgs e) // Kevin
         {
-           
+            DeleteRecipe = true;
+            this.Close();
         }
 
-        private void buttonUpdateRecipe_Click(object sender, EventArgs e)
+        // Uppdatera ett recept
+        private void buttonUpdateRecipe_Click(object sender, EventArgs e) // Kevin
         {
-
+            AddRecipe = true;
+            UppdatedRecipe = new Recipe
+            {
+                Title = textBoxTitle.Text,
+                Type = textBoxType.Text,
+                Description = string.Join(@"\n", richTxtDescription.Lines)
+            };
+            this.Close();
         }
     }
 }
