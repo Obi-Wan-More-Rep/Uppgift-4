@@ -61,7 +61,7 @@ namespace Uppgift_4
             string searchText = textBoxSearch.Text.ToLower(); // vara inte känslig om  stora boksatver
             dataGridView.Rows.Clear();
 
-            List<Recipe> recipes = dataHandler.GetRecipes();
+            List<Recipe> recipes = dataHandler.recipes;  // Av någon anledning så dupliceras recept i dataGridView om man skriver "dataHandler.GetRecipes()" så jag löste det genom att skriva istället "dataHandler.recipes" (kevin)
             foreach (var recipe in recipes)
             {
                 if (recipe.Title.ToLower().Contains(searchText) ||
