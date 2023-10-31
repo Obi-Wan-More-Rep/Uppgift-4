@@ -71,6 +71,23 @@ namespace Uppgift_4
             }
         }
 
+        // Lägg till ett nytt recept
+        private void buttonAdd_Click(object sender, EventArgs e) // Vanessa & Cornelia
+        {
+            RecipeDetails details = new RecipeDetails(isAdminSignedIn);
+            details.ShowDialog();
+
+            if (details.AddRecipe)
+            {
+                Recipe newRecipe = details.UppdatedRecipe;
+                //om man skrivit något på det nya receptet kommer den skapa ett nytt recept
+                if (newRecipe != null)
+                {
+                    dataHandler.AddRecipe(newRecipe); // Lägg till ett nytt recept i listan och textfilen
+                    dataGridView.Rows.Add(newRecipe.Title); // Lägg till receptet i dataGridView1
+                }
+            }
+        }
 
 
 
@@ -108,19 +125,19 @@ namespace Uppgift_4
 
 
 
-        //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
-        //{
-        //    string selectedmatype = comboBox1.SelectedItem.ToString();
-        //    if (selectedmatype != null)
-        //    {
-        //        List<Recipe> selectedtype = recipes.Where(recipe => recipe.Type == selectedmatype).ToList();
-        //        dataGridView.Rows.Clear();
-        //        foreach (var recipe in selectedtype)
-        //        {
-        //            dataGridView.Rows.Add(recipe.Title);
-        //        }
-        //    }
-        //}
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
+        {
+            //string selectedmatype = comboBox1.SelectedItem.ToString();
+            //if (selectedmatype != null)
+            //{
+            //    List<Recipe> selectedtype = recipes.Where(recipe => recipe.Type == selectedmatype).ToList();
+            //    dataGridView.Rows.Clear();
+            //    foreach (var recipe in selectedtype)
+            //    {
+            //        dataGridView.Rows.Add(recipe.Title);
+            //    }
+            //}
+        }
 
 
 
