@@ -10,7 +10,7 @@ namespace Uppgift_4
     {
         public List<Recipe> recipes { get; set; } = new List<Recipe>();
         public List<Admin> admins { get; set; } = new List<Admin>();
-        private const string AdminFilePath = @"Admins.txt";
+        private const string AdminFilePath = @"../../../Admin/Admins.txt";
         private const string RecipeFilePath = $@"../../../recipe/recipe.txt";
 
         private bool isAdminSignedIn { get; set; } // skapa en Login form, Kamal
