@@ -27,7 +27,8 @@ namespace Uppgift_4
             {
                 if (File.Exists(recipe.PiImage))
                 {
-                    dataGridView.Rows.Add(recipe.Title);
+                    Image image = Image.FromFile(recipe.PiImage);
+                    dataGridView.Rows.Add(recipe.Title, image);
                 }
                 else
                 {
