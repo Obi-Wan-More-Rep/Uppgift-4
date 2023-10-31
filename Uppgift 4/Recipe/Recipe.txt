@@ -1,3 +1,1 @@
-köttbullar,kött,,steka tillsammans
-fiskpinnar,fisk,../../../Bilder/köttbullar.jpg,djfdjfkdf
-kladdkaka,desert,../../../Bilder/köttbullar.jpg,ägg och choklad
+köttbullar,kött,../../../Bilder/köttbullar.jpg,steka tillsammans

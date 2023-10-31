@@ -54,12 +54,6 @@ namespace Uppgift_4
         //}
 
 
-        // Nollställa DataGridView
-        private void ResetDataGridView()
-        {
-            dataGridView.Rows.Clear();
-        }
-
 
         // söka på recept från recipes listan och visa i DataGridView
         private void textBoxSearch_TextChanged(object sender, EventArgs e) // Najah
@@ -74,7 +68,15 @@ namespace Uppgift_4
                     recipe.Type.ToLower().Contains(searchText))
 
                 {
-                    dataGridView.Rows.Add(recipe.Title, recipe.Description, recipe.Type);
+                    if (File.Exists(recipe.PiImage))
+                    {
+                        Image image = Image.FromFile(recipe.PiImage);
+                        dataGridView.Rows.Add(recipe.Title, image);
+                    }
+                    else
+                    {
+                        dataGridView.Rows.Add(recipe.Title);
+                    }
                 }
             }
         }
@@ -91,8 +93,8 @@ namespace Uppgift_4
                 //om man skrivit något på det nya receptet kommer den skapa ett nytt recept
                 if (newRecipe != null)
                 {
-                    //dataHandler.AddRecipe(newRecipe); // Lägg till ett nytt recept i listan och textfilen             Gamal kod
-                    //dataGridView.Rows.Add(newRecipe.Title,); // Lägg till receptet i dataGridView1                    Gamal kod
+                    //dataHandler.AddRecipe(newRecipe); // Lägg till ett nytt recept i listan och textfilen             Gammal kod
+                    //dataGridView.Rows.Add(newRecipe.Title,); // Lägg till receptet i dataGridView1                    Gammal kod
 
                     if (File.Exists(newRecipe.PiImage)) //Kevin, La till if statements
                     {

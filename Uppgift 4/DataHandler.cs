@@ -84,7 +84,7 @@ namespace Uppgift_4
             {
                 foreach (Recipe recipe in recipes)
                 {
-                    writer.WriteLine($"{recipe.Title},{recipe.Type},{recipe.Description}");
+                    writer.WriteLine($"{recipe.Title},{recipe.Type},{recipe.PiImage},{recipe.Description}");
                 }
             }
             Debug.WriteLine("Text file updated.");

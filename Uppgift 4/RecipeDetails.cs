@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Uppgift_4
 {
@@ -116,7 +117,7 @@ namespace Uppgift_4
             {
                 Title = textBoxTitle.Text,
                 Type = textBoxType.Text,
-
+                PiImage = "",           // Kan lägga till en combobox/textbox där man kan antingen välja vilken bild att använda sig av eller skriva in filsökvägen som finns på datorn.
                 Description = String.Join(@"\n", richTxtDescription.Lines)
             };
             //Stänger formen efter den sparat 
@@ -138,6 +139,7 @@ namespace Uppgift_4
             {
                 Title = textBoxTitle.Text,
                 Type = textBoxType.Text,
+                PiImage = selectedRecipe.PiImage, // Kan lägga till en combobox/textbox där man kan antingen välja vilken bild att använda sig av eller skriva in filsökvägen som finns på datorn.
                 Description = string.Join(@"\n", richTxtDescription.Lines)
             };
             this.Close();
