@@ -8,16 +8,18 @@ namespace Uppgift_4
 {
     public class Recipe
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Title { get; set; } 
         public string Type { get; set; }
+        public string PiImage { get; set; }
+        public string Description { get; set; }
         //public int RecipeId { get; set; }
 
         public Recipe()
         {
             Title = string.Empty;
-            Description = string.Empty;
+            PiImage = string.Empty;
             Type = string.Empty;
+            Description = string.Empty;
         }
     }
 }

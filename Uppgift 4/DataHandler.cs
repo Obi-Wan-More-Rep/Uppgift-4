@@ -37,7 +37,7 @@ namespace Uppgift_4
                     string[] parts = line.Split(',');
                     if (parts.Length == 3)
                     {
-                        recipes.Add(new Recipe { Title = parts[0], Type = parts[1], Description = parts[2] });
+                        recipes.Add(new Recipe { Title = parts[0], Type = parts[1], PiImage = parts[2], Description = parts[3] });
                     }
                     else
                     {
