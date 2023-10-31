@@ -29,6 +29,7 @@ namespace Uppgift_4
             this.selectedRecipe = selectedRecipe;
             StandardUserInterfaceSettings();
         }
+
         // Om du klickar på AddNewRecipe knappen i MainForm
         public RecipeDetails(bool isAdminSignedIn) // Kevin
         {
@@ -113,7 +114,7 @@ namespace Uppgift_4
         private void buttonAddRecipe_Click(object sender, EventArgs e) //Cornelia
         {
             AddRecipe = true;
-            UppdatedRecipe = new Recipe
+            UppdatedRecipe = new Recipe     // kan ändra denna rad imorgon
             {
                 Title = textBoxTitle.Text,
                 Type = textBoxType.Text,
@@ -134,7 +135,6 @@ namespace Uppgift_4
         // Uppdatera ett recept
         private void buttonUpdateRecipe_Click(object sender, EventArgs e) // Kevin
         {
-            AddRecipe = true;
             UppdatedRecipe = new Recipe
             {
                 Title = textBoxTitle.Text,

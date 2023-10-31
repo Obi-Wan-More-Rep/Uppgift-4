@@ -90,12 +90,13 @@ namespace Uppgift_4
             if (details.AddRecipe)
             {
                 Recipe newRecipe = details.UppdatedRecipe;
-                //om man skrivit något på det nya receptet kommer den skapa ett nytt recept
+                // om man skrivit något på det nya receptet kommer den skapa ett nytt recept
                 if (newRecipe != null)
                 {
-                    //dataHandler.AddRecipe(newRecipe); // Lägg till ett nytt recept i listan och textfilen             Gammal kod
-                    //dataGridView.Rows.Add(newRecipe.Title,); // Lägg till receptet i dataGridView1                    Gammal kod
+                    // Lägg till ett nytt recept i listan och textfilen
+                    dataHandler.AddRecipe(newRecipe); 
 
+                    // Lägg till receptet i dataGridView
                     if (File.Exists(newRecipe.PiImage)) //Kevin, La till if statements
                     {
                         Image image = Image.FromFile(newRecipe.PiImage);
