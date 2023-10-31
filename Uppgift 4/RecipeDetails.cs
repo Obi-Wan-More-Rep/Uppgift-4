@@ -123,7 +123,7 @@ namespace Uppgift_4
 
         private void buttonDeleteRecipe_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void buttonUpdateRecipe_Click(object sender, EventArgs e)
