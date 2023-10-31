@@ -12,7 +12,7 @@ namespace Uppgift_4
         public List<Admin> admins { get; set; } = new List<Admin>();
         private const string AdminFilePath = @"Admins.txt";
         private const string RecipeFilePath = $@"../../../recipe/recipe.txt";
-        
+
         private bool isAdminSignedIn { get; set; } // skapa en Login form, Kamal
 
 
@@ -31,7 +31,6 @@ namespace Uppgift_4
                 // Create a new empty ".txt" file
                 File.Create(RecipeFilePath).Close();
             }
-            dataGridView.RowTemplate.Height = 60; //vanessa, ändrar storleken på raderna
 
             using (StreamReader reader = new StreamReader(RecipeFilePath))
             {
@@ -246,6 +245,6 @@ namespace Uppgift_4
             }
         }
 
-      
+
     }
 }
