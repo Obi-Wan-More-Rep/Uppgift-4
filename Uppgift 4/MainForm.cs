@@ -42,7 +42,8 @@ namespace Uppgift_4
                     {
                         recipes.Add(new Recipe { Title = parts[0], Type = parts[1], Description = parts[2] });
                         dataGridView.Rows.Add(parts[0]);
-                        string imagePath = $@"Bilder\{parts[0]}.jpg";
+                        string imagePath = $@"../../../Bilder/{parts[0]}.jpg";
+
                         if (System.IO.File.Exists(imagePath))
                         {
                             int rowIdx = dataGridView.Rows.Count - 1;
@@ -228,9 +229,6 @@ namespace Uppgift_4
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
