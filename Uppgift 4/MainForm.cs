@@ -25,7 +25,9 @@ namespace Uppgift_4
             List<Recipe> recipes = dataHandler.GetRecipes(); // få en lista av recepten från DataHandler klassen
             foreach (Recipe recipe in recipes)
             {
-                dataGridView.Rows.Add(recipe.Title);
+                
+
+                dataGridView.Rows.Add(recipe.Title, recipe.PiImage);
             }
         }
 
