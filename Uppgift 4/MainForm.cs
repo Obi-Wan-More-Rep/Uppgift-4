@@ -31,7 +31,7 @@ namespace Uppgift_4
                 // Create a new empty ".txt" file
                 File.Create(RecipeFilePath).Close();
             }
-
+            dataGridView.RowTemplate.Height = 60; //vanessa, ändrar storleken på raderna
 
             using (StreamReader reader = new StreamReader(RecipeFilePath))
             {
