@@ -9,7 +9,7 @@ namespace Uppgift_4
     public partial class MainForm : Form
     {
         private DataHandler dataHandler { get; set; } = new DataHandler();
-        private bool isAdminSignedIn { get; set; } = true;
+        private bool isAdminSignedIn { get; set; }
 
 
         public MainForm()
@@ -37,6 +37,7 @@ namespace Uppgift_4
             }
         }
 
+        //stängde tillfälligt av ta bort metoden. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
 
         //public void TaBort()
         //{
@@ -145,7 +146,7 @@ namespace Uppgift_4
         }
 
 
-
+        // Stängde tillfälligt av comboBox. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
         {
             //string selectedmatype = comboBox1.SelectedItem.ToString();

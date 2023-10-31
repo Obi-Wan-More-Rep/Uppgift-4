@@ -118,10 +118,9 @@ namespace Uppgift_4
             {
                 Title = textBoxTitle.Text,
                 Type = textBoxType.Text,
-                PiImage = "",           // Kan lägga till en combobox/textbox där man kan antingen välja vilken bild att använda sig av eller skriva in filsökvägen som finns på datorn.
+                PiImage = "",           // Kan lägga till en combobox/textbox i Form designen där man kan antingen välja vilken bild att använda sig av eller skriva in filsökvägen på en bild som finns på datorn.
                 Description = String.Join(@"\n", richTxtDescription.Lines)
             };
-            //Stänger formen efter den sparat 
             this.Close();
         }
 
