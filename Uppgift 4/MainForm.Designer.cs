@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             dataGridView = new DataGridView();
+            Title = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewImageColumn();
             buttonSignIn = new Button();
             buttonSignOut = new Button();
             buttonAdd = new Button();
@@ -36,12 +38,7 @@
             textBoxSearch = new TextBox();
             comboBox1 = new ComboBox();
             label1 = new Label();
-
-            Title = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewImageColumn();
-
             label2 = new Label();
-
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -51,121 +48,15 @@
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { Title, Column1 });
-
-            dataGridView.Location = new Point(158, 125);
-
             dataGridView.Location = new Point(217, 182);
-
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
             dataGridView.RowHeadersWidth = 51;
             dataGridView.RowTemplate.Height = 60;
-
-            dataGridView.Size = new Size(410, 297);
-
             dataGridView.Size = new Size(531, 195);
-
             dataGridView.TabIndex = 0;
             dataGridView.SelectionChanged += dataGridView_SelectionChanged;
             // 
-            // buttonSignIn
-            // 
-
-            buttonSignIn.Location = new Point(3, 211);
-
-            buttonSignIn.Location = new Point(58, 203);
-
-            buttonSignIn.Name = "buttonSignIn";
-            buttonSignIn.Size = new Size(94, 29);
-            buttonSignIn.TabIndex = 2;
-            buttonSignIn.Text = "Sign in";
-            buttonSignIn.UseVisualStyleBackColor = true;
-            buttonSignIn.Click += buttonSignIn_Click;
-            // 
-            // buttonSignOut
-            // 
-
-            buttonSignOut.Location = new Point(3, 211);
-
-            buttonSignOut.Location = new Point(58, 203);
-
-            buttonSignOut.Name = "buttonSignOut";
-            buttonSignOut.Size = new Size(94, 29);
-            buttonSignOut.TabIndex = 3;
-            buttonSignOut.Text = "Sign out";
-            buttonSignOut.UseVisualStyleBackColor = true;
-            buttonSignOut.Visible = false;
-            buttonSignOut.Click += buttonSignOut_Click;
-            // 
-            // buttonAdd
-            // 
-
-            buttonAdd.Location = new Point(3, 265);
-
-            buttonAdd.Location = new Point(58, 280);
-
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(94, 29);
-            buttonAdd.TabIndex = 4;
-            buttonAdd.Text = "Add";
-            buttonAdd.UseVisualStyleBackColor = true;
-            buttonAdd.Visible = false;
-            buttonAdd.Click += buttonAdd_Click;
-            // 
-            // buttonDelete
-            // 
-
-            buttonDelete.Location = new Point(3, 335);
-
-            buttonDelete.Location = new Point(58, 348);
-
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(94, 29);
-            buttonDelete.TabIndex = 5;
-            buttonDelete.Text = "Delete";
-            buttonDelete.UseVisualStyleBackColor = true;
-            buttonDelete.Visible = false;
-            buttonDelete.Click += buttonDelete_Click;
-            // 
-            // textBoxSearch
-            // 
-
-            textBoxSearch.Location = new Point(296, 61);
-
-            textBoxSearch.Location = new Point(276, 411);
-
-            textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(257, 27);
-            textBoxSearch.TabIndex = 6;
-            textBoxSearch.TextChanged += textBoxSearch_TextChanged;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-
-            comboBox1.Location = new Point(627, 63);
-
-            comboBox1.Location = new Point(597, 412);
-
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 7;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-
-            label1.Location = new Point(209, 68);
-
-            label1.Location = new Point(217, 415);
-
-            label1.Name = "label1";
-            label1.Size = new Size(53, 20);
-            label1.TabIndex = 8;
-            label1.Text = "Search";
-            // 
-
             // Title
             // 
             Title.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -184,7 +75,76 @@
             Column1.SortMode = DataGridViewColumnSortMode.Automatic;
             Column1.Visible = false;
             Column1.Width = 125;
-
+            // 
+            // buttonSignIn
+            // 
+            buttonSignIn.Location = new Point(58, 203);
+            buttonSignIn.Name = "buttonSignIn";
+            buttonSignIn.Size = new Size(94, 29);
+            buttonSignIn.TabIndex = 2;
+            buttonSignIn.Text = "Sign in";
+            buttonSignIn.UseVisualStyleBackColor = true;
+            buttonSignIn.Click += buttonSignIn_Click;
+            // 
+            // buttonSignOut
+            // 
+            buttonSignOut.Location = new Point(58, 203);
+            buttonSignOut.Name = "buttonSignOut";
+            buttonSignOut.Size = new Size(94, 29);
+            buttonSignOut.TabIndex = 3;
+            buttonSignOut.Text = "Sign out";
+            buttonSignOut.UseVisualStyleBackColor = true;
+            buttonSignOut.Visible = false;
+            buttonSignOut.Click += buttonSignOut_Click;
+            // 
+            // buttonAdd
+            // 
+            buttonAdd.Location = new Point(58, 280);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(94, 29);
+            buttonAdd.TabIndex = 4;
+            buttonAdd.Text = "Add";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Visible = false;
+            buttonAdd.Click += buttonAdd_Click;
+            // 
+            // buttonDelete
+            // 
+            buttonDelete.Location = new Point(58, 348);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(94, 29);
+            buttonDelete.TabIndex = 5;
+            buttonDelete.Text = "Delete";
+            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Visible = false;
+            buttonDelete.Click += buttonDelete_Click;
+            // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(276, 411);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(257, 27);
+            textBoxSearch.TabIndex = 6;
+            textBoxSearch.TextChanged += textBoxSearch_TextChanged;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(597, 412);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 7;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(217, 415);
+            label1.Name = "label1";
+            label1.Size = new Size(53, 20);
+            label1.TabIndex = 8;
+            label1.Text = "Search";
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -196,19 +156,14 @@
             label2.Size = new Size(341, 38);
             label2.TabIndex = 9;
             label2.Text = "International Food Ab";
-
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-
-            ClientSize = new Size(800, 451);
-
-            
+            BackgroundImage = Properties.Resources.Startsida;
             ClientSize = new Size(800, 451);
             Controls.Add(label2);
-
             Controls.Add(label1);
             Controls.Add(comboBox1);
             Controls.Add(textBoxSearch);
