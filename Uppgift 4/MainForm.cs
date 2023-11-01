@@ -29,10 +29,20 @@ namespace Uppgift_4
                 {
                     Image image = Image.FromFile(recipe.PiImage);
                     dataGridView.Rows.Add(recipe.Title, image);
+                    if (!comboBox1.Items.Contains(recipe.Type))
+                    {
+                        comboBox1.Items.Add(recipe.Type);
+
+                    }
                 }
                 else
                 {
                     dataGridView.Rows.Add(recipe.Title);
+                    if (!comboBox1.Items.Contains(recipe.Type))
+                    {
+                        comboBox1.Items.Add(recipe.Type);
+
+                    }
                 }
             }
         }
