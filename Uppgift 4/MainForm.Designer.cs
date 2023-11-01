@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             dataGridView = new DataGridView();
+            Title = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewImageColumn();
             buttonSignIn = new Button();
             buttonSignOut = new Button();
             buttonAdd = new Button();
@@ -37,8 +39,6 @@
             comboBox1 = new ComboBox();
             label1 = new Label();
             label2 = new Label();
-            Title = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -56,6 +56,24 @@
             dataGridView.Size = new Size(531, 195);
             dataGridView.TabIndex = 0;
             dataGridView.SelectionChanged += dataGridView_SelectionChanged;
+            // 
+            // Title
+            // 
+            Title.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Title.HeaderText = "Title";
+            Title.MinimumWidth = 6;
+            Title.Name = "Title";
+            Title.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "image";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Resizable = DataGridViewTriState.True;
+            Column1.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column1.Width = 125;
             // 
             // buttonSignIn
             // 
@@ -138,29 +156,12 @@
             label2.TabIndex = 9;
             label2.Text = "International Food Ab";
             // 
-            // Title
-            // 
-            Title.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Title.HeaderText = "Title";
-            Title.MinimumWidth = 6;
-            Title.Name = "Title";
-            Title.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "image";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Resizable = DataGridViewTriState.True;
-            Column1.SortMode = DataGridViewColumnSortMode.Automatic;
-            Column1.Width = 125;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Startsida;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 451);
             Controls.Add(label2);
             Controls.Add(label1);
