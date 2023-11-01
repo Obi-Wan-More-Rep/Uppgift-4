@@ -1,5 +1,2 @@
-köttbullar,kött,../../../Bilder/köttbullar.jpg,steka tillsammans
-laxbulle,fisk,,lax\nbullar\nsås
-köttbullar,kött,../../../Bilder/köttbullar.jpg,steka tillsammans
-laxbulle,fisk,,lax\nbullar\nsås
-Grönsakssoppa,vegetarisk,,Ingredienser:\n– ½ purjolök, det gröna\n– 2 små morötter\n– 1 stor potatis\n– 1 msk smör till stekning\n– 5 dl vatten\n– 1 dl kokosmjölk\n– 1 grönsaksbuljongtärning eller 1,5 msk konc kycklingfond\n– 2 msk finhackad färsk timjan eller 1 tsk torkad\n– salt och peppar\n– ½ burk små vita bönor à ca 400 g\n– 15 g babyspenat\nGör så här\nDela purjolöken på längden och skölj noga. Skär purjolöken i skivor. Skala och tärna morötterna och potatisen. Fräs allt i smör i en kastrull tills löken mjuknat utan att få färg.\n	\nTillsätt vatten, kokosmjölk, buljongtärning och timjan. Sjud soppan tills grönsakerna är precis mjuka. Smaka av med salt och peppar.\n\nSkölj bönorna och grovhacka spenaten. Lägg ner i soppan och låt allt bli varmt. Servera med bröd.
+köttbullar,kött,../../../Bilder/köttbullar.jpg,dkfkfjkf
+fiskpinnar,fisk,,gigigi
