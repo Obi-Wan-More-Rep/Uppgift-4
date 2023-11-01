@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using static System.Net.Mime.MediaTypeNames;
+using Image = System.Drawing.Image;
 
 namespace Uppgift_4
 {
@@ -142,6 +143,11 @@ namespace Uppgift_4
                 Description = string.Join(@"\n", richTxtDescription.Lines)
             };
             this.Close();
+        }
+
+        public void VisaBild(Image bild)
+        {
+            pictureBox1.Image = bild;
         }
     }
 }

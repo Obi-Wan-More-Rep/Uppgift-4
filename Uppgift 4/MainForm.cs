@@ -95,7 +95,7 @@ namespace Uppgift_4
                 if (newRecipe != null)
                 {
                     // Lägg till ett nytt recept i listan och textfilen
-                    dataHandler.AddRecipe(newRecipe); 
+                    dataHandler.AddRecipe(newRecipe);
 
                     // Lägg till receptet i dataGridView
                     if (File.Exists(newRecipe.PiImage)) //Kevin, La till if statements
@@ -176,39 +176,48 @@ namespace Uppgift_4
                 if (selectedRecipe != null)
                 {
                     // Öppna en instans av Formen detailsForm
-                    RecipeDetails detailsForm = new RecipeDetails(isAdminSignedIn, selectedRecipe);
-                    detailsForm.ShowDialog();
-
-                    Recipe updatedRecipe = detailsForm.UppdatedRecipe;
-
-                    // Om du klickar på att ta bort receptet
-                    if (detailsForm.DeleteRecipe)
+                    string imagePath = $@"../../../Bilder/{selectedRecipe.Title}.jpg"; // Assuming the image path is named after the recipe title
+                    if (System.IO.File.Exists(imagePath))
                     {
-                        // Ta bort receptet från listan
-                        dataHandler.RemoveRecipe(selectedRecipe);
+                        Image image = Image.FromFile(imagePath);
 
-                        // Ta bort receptet från dataGridView
-                        int rowIndex = selectedRow.Index;
-                        dataGridView.Rows.RemoveAt(rowIndex);
-                    }
 
-                    // Om du klickar på att uppdatera receptet och du har gjort ändringar
-                    else if (updatedRecipe.Title != selectedRecipe.Title || updatedRecipe.Description != selectedRecipe.Description || updatedRecipe.Type != selectedRecipe.Type)
-                    {
-                        // Ta bort gamla receptet från listan
-                        dataHandler.RemoveRecipe(selectedRecipe);
+                        RecipeDetails detailsForm = new RecipeDetails(isAdminSignedIn, selectedRecipe);
+                        detailsForm.VisaBild(image); // Pass the image to RecipeDetailsForm's PictureBox
 
-                        // Lägger till uppdaterade receptet i listan
-                        dataHandler.AddRecipe(updatedRecipe);
+                        detailsForm.ShowDialog();
 
-                        // Uppdaterar dataGridView utan att rensa hela den och läsa om den. Detta fixar buggen med att recept duppliceras
-                        int rowIndex = selectedRow.Index;
-                        dataGridView.Rows[rowIndex].Cells[0].Value = updatedRecipe.Title;
+                        Recipe updatedRecipe = detailsForm.UppdatedRecipe;
+
+                        // Om du klickar på att ta bort receptet
+                        if (detailsForm.DeleteRecipe)
+                        {
+                            // Ta bort receptet från listan
+                            dataHandler.RemoveRecipe(selectedRecipe);
+
+                            // Ta bort receptet från dataGridView
+                            int rowIndex = selectedRow.Index;
+                            dataGridView.Rows.RemoveAt(rowIndex);
+                        }
+
+                        // Om du klickar på att uppdatera receptet och du har gjort ändringar
+                        else if (updatedRecipe.Title != selectedRecipe.Title || updatedRecipe.Description != selectedRecipe.Description || updatedRecipe.Type != selectedRecipe.Type)
+                        {
+                            // Ta bort gamla receptet från listan
+                            dataHandler.RemoveRecipe(selectedRecipe);
+
+                            // Lägger till uppdaterade receptet i listan
+                            dataHandler.AddRecipe(updatedRecipe);
+
+                            // Uppdaterar dataGridView utan att rensa hela den och läsa om den. Detta fixar buggen med att recept duppliceras
+                            int rowIndex = selectedRow.Index;
+                            dataGridView.Rows[rowIndex].Cells[0].Value = updatedRecipe.Title;
+                        }
                     }
                 }
             }
+
+
         }
-
-
     }
 }

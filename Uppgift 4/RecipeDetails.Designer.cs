@@ -34,25 +34,27 @@
             buttonAddRecipe = new Button();
             textBoxTitle = new TextBox();
             textBoxType = new TextBox();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // richTxtDescription
             // 
-            richTxtDescription.Location = new Point(54, 163);
-            richTxtDescription.Margin = new Padding(4, 3, 4, 3);
+            richTxtDescription.Location = new Point(43, 130);
+            richTxtDescription.Margin = new Padding(3, 2, 3, 2);
             richTxtDescription.Name = "richTxtDescription";
             richTxtDescription.ReadOnly = true;
-            richTxtDescription.Size = new Size(563, 356);
+            richTxtDescription.Size = new Size(451, 286);
             richTxtDescription.TabIndex = 0;
             richTxtDescription.Text = "";
             richTxtDescription.DoubleClick += richTxtDescription_DoubleClick;
             // 
             // buttonUpdateRecipe
             // 
-            buttonUpdateRecipe.Location = new Point(726, 187);
-            buttonUpdateRecipe.Margin = new Padding(4, 3, 4, 3);
+            buttonUpdateRecipe.Location = new Point(581, 150);
+            buttonUpdateRecipe.Margin = new Padding(3, 2, 3, 2);
             buttonUpdateRecipe.Name = "buttonUpdateRecipe";
-            buttonUpdateRecipe.Size = new Size(190, 60);
+            buttonUpdateRecipe.Size = new Size(152, 48);
             buttonUpdateRecipe.TabIndex = 1;
             buttonUpdateRecipe.Text = "Update";
             buttonUpdateRecipe.UseVisualStyleBackColor = true;
@@ -61,10 +63,10 @@
             // 
             // buttonDeleteRecipe
             // 
-            buttonDeleteRecipe.Location = new Point(726, 297);
-            buttonDeleteRecipe.Margin = new Padding(4, 3, 4, 3);
+            buttonDeleteRecipe.Location = new Point(581, 238);
+            buttonDeleteRecipe.Margin = new Padding(3, 2, 3, 2);
             buttonDeleteRecipe.Name = "buttonDeleteRecipe";
-            buttonDeleteRecipe.Size = new Size(190, 67);
+            buttonDeleteRecipe.Size = new Size(152, 54);
             buttonDeleteRecipe.TabIndex = 2;
             buttonDeleteRecipe.Text = "Delete recipe";
             buttonDeleteRecipe.UseVisualStyleBackColor = true;
@@ -73,10 +75,10 @@
             // 
             // buttonAddRecipe
             // 
-            buttonAddRecipe.Location = new Point(726, 427);
-            buttonAddRecipe.Margin = new Padding(4, 3, 4, 3);
+            buttonAddRecipe.Location = new Point(581, 342);
+            buttonAddRecipe.Margin = new Padding(3, 2, 3, 2);
             buttonAddRecipe.Name = "buttonAddRecipe";
-            buttonAddRecipe.Size = new Size(190, 63);
+            buttonAddRecipe.Size = new Size(152, 50);
             buttonAddRecipe.TabIndex = 3;
             buttonAddRecipe.Text = "Add new";
             buttonAddRecipe.UseVisualStyleBackColor = true;
@@ -85,38 +87,49 @@
             // 
             // textBoxTitle
             // 
-            textBoxTitle.Location = new Point(54, 72);
-            textBoxTitle.Margin = new Padding(4, 3, 4, 3);
+            textBoxTitle.Location = new Point(43, 58);
+            textBoxTitle.Margin = new Padding(3, 2, 3, 2);
             textBoxTitle.Name = "textBoxTitle";
             textBoxTitle.ReadOnly = true;
-            textBoxTitle.Size = new Size(305, 31);
+            textBoxTitle.Size = new Size(245, 27);
             textBoxTitle.TabIndex = 4;
             textBoxTitle.DoubleClick += TextBox_DoubleClick;
             // 
             // textBoxType
             // 
-            textBoxType.Location = new Point(54, 113);
-            textBoxType.Margin = new Padding(4, 3, 4, 3);
+            textBoxType.Location = new Point(43, 90);
+            textBoxType.Margin = new Padding(3, 2, 3, 2);
             textBoxType.Name = "textBoxType";
             textBoxType.ReadOnly = true;
-            textBoxType.Size = new Size(155, 31);
+            textBoxType.Size = new Size(125, 27);
             textBoxType.TabIndex = 5;
             textBoxType.DoubleClick += TextBox_DoubleClick;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(544, 39);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(189, 90);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
             // RecipeDetails
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 563);
+            ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox1);
             Controls.Add(textBoxType);
             Controls.Add(textBoxTitle);
             Controls.Add(buttonAddRecipe);
             Controls.Add(buttonDeleteRecipe);
             Controls.Add(buttonUpdateRecipe);
             Controls.Add(richTxtDescription);
-            Margin = new Padding(4, 3, 4, 3);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "RecipeDetails";
             Text = "RecipeDetails";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -129,5 +142,6 @@
         private Button buttonAddRecipe;
         private TextBox textBoxTitle;
         private TextBox textBoxType;
+        private PictureBox pictureBox1;
     }
 }
