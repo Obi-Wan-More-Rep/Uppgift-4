@@ -160,16 +160,16 @@ namespace Uppgift_4
         // Stängde tillfälligt av comboBox. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
         {
-            //string selectedmatype = comboBox1.SelectedItem.ToString();
-            //if (selectedmatype != null)
-            //{
-            //    List<Recipe> selectedtype = recipes.Where(recipe => recipe.Type == selectedmatype).ToList();
-            //    dataGridView.Rows.Clear();
-            //    foreach (var recipe in selectedtype)
-            //    {
-            //        dataGridView.Rows.Add(recipe.Title);
-            //    }
-            //}
+            string selectedmatype = comboBox1.SelectedItem.ToString();
+            if (selectedmatype != null)
+            {
+                List<Recipe> selectedtype = dataHandler.recipes.Where(recipe => recipe.Type == selectedmatype).ToList();
+                dataGridView.Rows.Clear();
+                foreach (var recipe in selectedtype)
+                {
+                    dataGridView.Rows.Add(recipe.Title);
+                }
+            }
         }
 
 
@@ -186,15 +186,8 @@ namespace Uppgift_4
                 // Om det finns ett recept i listan som har samma namn som selectedRecipe
                 if (selectedRecipe != null)
                 {
-                    // Öppna en instans av Formen detailsForm
-                    //string imagePath = $@"../../../Bilder/{selectedRecipe.Title}.jpg"; // Assuming the image path is named after the recipe title
-                    // if (System.IO.File.Exists(imagePath))
-                    {
-                        //Image image = Image.FromFile(imagePath);
-
-
+                   
                         RecipeDetails detailsForm = new RecipeDetails(isAdminSignedIn, selectedRecipe);
-                        // detailsForm.VisaBild(image); // Pass the image to RecipeDetailsForm's PictureBox
 
                         detailsForm.ShowDialog();
 
@@ -224,7 +217,7 @@ namespace Uppgift_4
                             int rowIndex = selectedRow.Index;
                             dataGridView.Rows[rowIndex].Cells[0].Value = updatedRecipe.Title;
                         }
-                    }
+                    
                 }
             }
 

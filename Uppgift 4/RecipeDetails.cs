@@ -151,9 +151,6 @@ namespace Uppgift_4
             this.Close();
         }
 
-        //public void VisaBild(Image bild)
-        //{
-        //    pictureBox1.Image = bild;
-        //}
+        
     }
 }
