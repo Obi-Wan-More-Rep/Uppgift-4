@@ -58,6 +58,12 @@ namespace Uppgift_4
             //populera textrutorna med receptet
             textBoxTitle.Text = selectedRecipe.Title;
             textBoxType.Text = selectedRecipe.Type;
+            if (File.Exists(selectedRecipe.PiImage))
+            {
+                Image image = Image.FromFile(selectedRecipe.PiImage);
+                pictureBox1.Image = image;
+            }
+
             //hanterar rich textbox för att visa flera rader korrekt
             richTxtDescription.Lines = selectedRecipe.Description.Split(@"\n");
         }
@@ -145,9 +151,9 @@ namespace Uppgift_4
             this.Close();
         }
 
-        public void VisaBild(Image bild)
-        {
-            pictureBox1.Image = bild;
-        }
+        //public void VisaBild(Image bild)
+        //{
+        //    pictureBox1.Image = bild;
+        //}
     }
 }
