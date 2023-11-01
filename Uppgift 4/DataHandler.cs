@@ -17,6 +17,7 @@ namespace Uppgift_4
         public DataHandler()
         {
             LoadAdmin();
+            LoadRecipes();
         }
 
         // Lägga till recept i recipe listan och i DataGridView
@@ -90,12 +91,12 @@ namespace Uppgift_4
             Debug.WriteLine("Text file updated.");
         }
 
-        // Hämta in alla recept i en variabel
-        public List<Recipe> GetRecipes()
-        {
-            LoadRecipes();
-            return recipes;
-        }
+        //// Hämta in alla recept i en variabel
+        //public List<Recipe> GetRecipes()
+        //{
+        //    LoadRecipes();
+        //    return recipes;
+        //}
 
         // Lägg till till recept i listan och uppdatera textfilen
         public void AddRecipe(Recipe recipe)

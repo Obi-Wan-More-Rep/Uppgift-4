@@ -22,7 +22,7 @@ namespace Uppgift_4
 
         private void LoadRecipesIntoDataGridView()
         {
-            List<Recipe> recipes = dataHandler.GetRecipes(); // få en lista av recepten från DataHandler klassen
+            List<Recipe> recipes = dataHandler.recipes; // få en lista av recepten från DataHandler klassen
             foreach (Recipe recipe in recipes)
             {
                 if (File.Exists(recipe.PiImage))
@@ -195,7 +195,7 @@ namespace Uppgift_4
             {
                 DataGridViewRow selectedRow = dataGridView.SelectedRows[0]; // Sista valda raden
                 string selectedTitle = selectedRow.Cells[0].Value.ToString(); // namnet på receptet
-                Recipe selectedRecipe = dataHandler.GetRecipes().FirstOrDefault(recipe => recipe.Title == selectedTitle); // Sök efter alla recept till du hittar ett med matchande namn
+                Recipe selectedRecipe = dataHandler.recipes.FirstOrDefault(recipe => recipe.Title == selectedTitle); // Sök efter alla recept till du hittar ett med matchande namn
 
                 // Om det finns ett recept i listan som har samma namn som selectedRecipe
                 if (selectedRecipe != null)
