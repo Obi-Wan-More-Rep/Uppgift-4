@@ -217,7 +217,10 @@ namespace Uppgift_4
                 }
             }
 
+<<<<<<< HEAD
 
         }
+=======
+>>>>>>> Design förbättring
     }
 }
