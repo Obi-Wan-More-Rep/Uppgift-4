@@ -46,6 +46,7 @@
             richTxtDescription.Margin = new Padding(4, 2, 4, 2);
             richTxtDescription.Name = "richTxtDescription";
             richTxtDescription.ReadOnly = true;
+            richTxtDescription.ScrollBars = RichTextBoxScrollBars.Horizontal;
             richTxtDescription.Size = new Size(572, 234);
             richTxtDescription.TabIndex = 0;
             richTxtDescription.Text = "";
@@ -111,7 +112,7 @@
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Location = new Point(638, 190);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(328, 235);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -143,6 +144,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Startsida;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1000, 562);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
