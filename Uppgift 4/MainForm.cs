@@ -65,6 +65,36 @@ namespace Uppgift_4
         //}
 
 
+
+        // söka på recept från recipes listan och visa i DataGridView
+        private void textBoxSearch_TextChanged(object sender, EventArgs e) // Najah
+        {
+            string searchText = textBoxSearch.Text.ToLower(); // vara inte känslig om  stora boksatver
+            dataGridView.Rows.Clear();
+
+            List<Recipe> recipes = dataHandler.recipes;  // Av någon anledning så dupliceras recept i dataGridView om man skriver "dataHandler.GetRecipes()" så jag löste det genom att skriva istället "dataHandler.recipes" (kevin)
+            foreach (var recipe in recipes)
+            {
+                if (recipe.Title.ToLower().Contains(searchText) ||
+                    recipe.Type.ToLower().Contains(searchText))
+
+                {
+                    if (File.Exists(recipe.PiImage))
+                    {
+                        dataGridView.Rows.Clear();
+                        Image image = Image.FromFile(recipe.PiImage);
+                        dataGridView.Rows.Add(recipe.Title, image);
+                    }
+                    else
+                    {
+                        dataGridView.Rows.Clear();
+                        dataGridView.Rows.Add(recipe.Title);
+                    }
+                }
+                
+            }
+        }
+
         // Lägg till ett nytt recept
         private void buttonAdd_Click(object sender, EventArgs e) // Vanessa & Cornelia
         {
@@ -129,6 +159,35 @@ namespace Uppgift_4
             //TaBort();
         }
 
+
+        // Stängde tillfälligt av comboBox. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
+        {
+            string selectedmatype = comboBox1.SelectedItem.ToString();
+            if (selectedmatype != null)
+            {
+                List<Recipe> selectedtype = dataHandler.recipes.Where(recipe => recipe.Type == selectedmatype).ToList();
+                dataGridView.Rows.Clear();
+                foreach (var recipe in selectedtype)
+                {
+
+                    if (File.Exists(recipe.PiImage))
+                    {
+                        Image image = Image.FromFile(recipe.PiImage);
+                        dataGridView.Rows.Add(recipe.Title, image);
+
+                    }
+
+                    else
+                    {
+                        dataGridView.Rows.Add((recipe.Title));
+                    }
+                }
+            }
+        }
+
+
+
         // Öppna en ny Form när man klickar på en rad för att visa detaljerad information. Om du är inloggad som "Admin" så kan du även redigera receptet
         private void dataGridView_SelectionChanged(object sender, EventArgs e) // Kevin
         {
@@ -180,43 +239,6 @@ namespace Uppgift_4
 
         }
 
-        private void textBoxSearch_TextChanged(object sender, EventArgs e)
-        {
-            string searchText = textBoxSearch.Text.ToLower(); // Text to search for (convert to lowercase for case-insensitive search)
 
-            List<Recipe> recipes = dataHandler.GetRecipes();
-
-            dataGridView.Rows.Clear(); // Clear the existing rows in the DataGridView
-
-            foreach (Recipe recipe in recipes)
-            {
-                if (recipe.Title.ToLower().Contains(searchText))
-                {
-                    bool alreadyExists = false;
-
-                    foreach (DataGridViewRow row in dataGridView.Rows)
-                    {
-                        if (row.Cells.Count > 0 && row.Cells[0].Value != null && row.Cells[0].Value.ToString() == recipe.Title)
-                        {
-                            alreadyExists = true;
-                            break;
-                        }
-                    }
-
-                    if (!alreadyExists)
-                    {
-                        if (File.Exists(recipe.PiImage))
-                        {
-                            Image image = Image.FromFile(recipe.PiImage);
-                            dataGridView.Rows.Add(recipe.Title, image);
-                        }
-                        else
-                        {
-                            dataGridView.Rows.Add(recipe.Title);
-                        }
-                    }
-                }
-            }
-        }
     }
 }
