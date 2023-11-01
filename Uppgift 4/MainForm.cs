@@ -167,7 +167,18 @@ namespace Uppgift_4
                 dataGridView.Rows.Clear();
                 foreach (var recipe in selectedtype)
                 {
-                    dataGridView.Rows.Add(recipe.Title);
+
+                    if (File.Exists(recipe.PiImage))
+                    {
+                        Image image = Image.FromFile(recipe.PiImage);
+                        dataGridView.Rows.Add(recipe.Title, image);
+
+                    }
+
+                    else
+                    {
+                        dataGridView.Rows.Add((recipe.Title));
+                    }
                 }
             }
         }
@@ -186,38 +197,38 @@ namespace Uppgift_4
                 // Om det finns ett recept i listan som har samma namn som selectedRecipe
                 if (selectedRecipe != null)
                 {
-                   
-                        RecipeDetails detailsForm = new RecipeDetails(isAdminSignedIn, selectedRecipe);
 
-                        detailsForm.ShowDialog();
+                    RecipeDetails detailsForm = new RecipeDetails(isAdminSignedIn, selectedRecipe);
 
-                        Recipe updatedRecipe = detailsForm.UppdatedRecipe;
+                    detailsForm.ShowDialog();
 
-                        // Om du klickar på att ta bort receptet
-                        if (detailsForm.DeleteRecipe)
-                        {
-                            // Ta bort receptet från listan
-                            dataHandler.RemoveRecipe(selectedRecipe);
+                    Recipe updatedRecipe = detailsForm.UppdatedRecipe;
 
-                            // Ta bort receptet från dataGridView
-                            int rowIndex = selectedRow.Index;
-                            dataGridView.Rows.RemoveAt(rowIndex);
-                        }
+                    // Om du klickar på att ta bort receptet
+                    if (detailsForm.DeleteRecipe)
+                    {
+                        // Ta bort receptet från listan
+                        dataHandler.RemoveRecipe(selectedRecipe);
 
-                        // Om du klickar på att uppdatera receptet och du har gjort ändringar
-                        else if (updatedRecipe.Title != selectedRecipe.Title || updatedRecipe.Description != selectedRecipe.Description || updatedRecipe.Type != selectedRecipe.Type)
-                        {
-                            // Ta bort gamla receptet från listan
-                            dataHandler.RemoveRecipe(selectedRecipe);
+                        // Ta bort receptet från dataGridView
+                        int rowIndex = selectedRow.Index;
+                        dataGridView.Rows.RemoveAt(rowIndex);
+                    }
 
-                            // Lägger till uppdaterade receptet i listan
-                            dataHandler.AddRecipe(updatedRecipe);
+                    // Om du klickar på att uppdatera receptet och du har gjort ändringar
+                    else if (updatedRecipe.Title != selectedRecipe.Title || updatedRecipe.Description != selectedRecipe.Description || updatedRecipe.Type != selectedRecipe.Type)
+                    {
+                        // Ta bort gamla receptet från listan
+                        dataHandler.RemoveRecipe(selectedRecipe);
 
-                            // Uppdaterar dataGridView utan att rensa hela den och läsa om den. Detta fixar buggen med att recept duppliceras
-                            int rowIndex = selectedRow.Index;
-                            dataGridView.Rows[rowIndex].Cells[0].Value = updatedRecipe.Title;
-                        }
-                    
+                        // Lägger till uppdaterade receptet i listan
+                        dataHandler.AddRecipe(updatedRecipe);
+
+                        // Uppdaterar dataGridView utan att rensa hela den och läsa om den. Detta fixar buggen med att recept duppliceras
+                        int rowIndex = selectedRow.Index;
+                        dataGridView.Rows[rowIndex].Cells[0].Value = updatedRecipe.Title;
+                    }
+
                 }
             }
 
