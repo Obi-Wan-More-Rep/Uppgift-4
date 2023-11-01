@@ -81,14 +81,17 @@ namespace Uppgift_4
                 {
                     if (File.Exists(recipe.PiImage))
                     {
+                        dataGridView.Rows.Clear();
                         Image image = Image.FromFile(recipe.PiImage);
                         dataGridView.Rows.Add(recipe.Title, image);
                     }
                     else
                     {
+                        dataGridView.Rows.Clear();
                         dataGridView.Rows.Add(recipe.Title);
                     }
                 }
+                
             }
         }
 
