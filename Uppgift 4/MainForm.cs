@@ -177,14 +177,14 @@ namespace Uppgift_4
                 if (selectedRecipe != null)
                 {
                     // Öppna en instans av Formen detailsForm
-                    string imagePath = $@"../../../Bilder/{selectedRecipe.Title}.jpg"; // Assuming the image path is named after the recipe title
-                    if (System.IO.File.Exists(imagePath))
+                    //string imagePath = $@"../../../Bilder/{selectedRecipe.Title}.jpg"; // Assuming the image path is named after the recipe title
+                    // if (System.IO.File.Exists(imagePath))
                     {
-                        Image image = Image.FromFile(imagePath);
+                        //Image image = Image.FromFile(imagePath);
 
 
                         RecipeDetails detailsForm = new RecipeDetails(isAdminSignedIn, selectedRecipe);
-                        detailsForm.VisaBild(image); // Pass the image to RecipeDetailsForm's PictureBox
+                        // detailsForm.VisaBild(image); // Pass the image to RecipeDetailsForm's PictureBox
 
                         detailsForm.ShowDialog();
 
