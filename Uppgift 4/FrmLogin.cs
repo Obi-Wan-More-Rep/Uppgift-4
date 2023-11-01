@@ -17,7 +17,7 @@ namespace Uppgift_4
         public bool IsLoginSuccessful;
 
 
-        public FrmLogin(List<Admin>admins)
+        public FrmLogin(List<Admin> admins)
         {
             InitializeComponent();
             this.Admins = admins;

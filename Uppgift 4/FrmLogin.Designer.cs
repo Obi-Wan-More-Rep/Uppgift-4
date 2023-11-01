@@ -44,7 +44,7 @@
             // 
             // passwordBox
             // 
-            passwordBox.Location = new Point(141, 194);
+            passwordBox.Location = new Point(141, 164);
             passwordBox.Name = "passwordBox";
             passwordBox.Size = new Size(235, 27);
             passwordBox.TabIndex = 3;
@@ -61,7 +61,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(141, 171);
+            label2.Location = new Point(141, 141);
             label2.Name = "label2";
             label2.Size = new Size(73, 20);
             label2.TabIndex = 5;
@@ -69,7 +69,7 @@
             // 
             // Loginbtn
             // 
-            Loginbtn.Location = new Point(398, 144);
+            Loginbtn.Location = new Point(213, 228);
             Loginbtn.Name = "Loginbtn";
             Loginbtn.Size = new Size(94, 29);
             Loginbtn.TabIndex = 6;
@@ -81,6 +81,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Startsida;
             ClientSize = new Size(523, 373);
             Controls.Add(Loginbtn);
             Controls.Add(label2);
