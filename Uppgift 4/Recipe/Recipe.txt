@@ -1,1 +1,4 @@
 köttbullar,kött,../../../Bilder/köttbullar.jpg,steka tillsammans
+laxbulle,fisk,,lax\nbullar\nsås
+köttbullar,kött,../../../Bilder/köttbullar.jpg,steka tillsammans
+laxbulle,fisk,,lax\nbullar\nsås

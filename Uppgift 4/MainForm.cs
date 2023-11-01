@@ -141,6 +141,7 @@ namespace Uppgift_4
         // Ta bort markerad recipe
         private void buttonDelete_Click(object sender, EventArgs e) // Simon
         {
+            //test
             // Ta bort receptet från listan
             //TaBort();
         }
