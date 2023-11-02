@@ -100,7 +100,7 @@ namespace Uppgift_4
                     dataHandler.AddRecipe(newRecipe);
 
                     // Lägg till receptet i dataGridView
-                    if (File.Exists(newRecipe.PiImage)) //Kevin, La till if statements
+                    if (File.Exists(newRecipe.PiImage)) //La till if statements (Kevin)
                     {
                         Image image = Image.FromFile(newRecipe.PiImage);
                         dataGridView.Rows.Add(newRecipe.Title, image);
@@ -141,11 +141,11 @@ namespace Uppgift_4
         // Ta bort markerad recipe
         private void buttonDelete_Click(object sender, EventArgs e) // Simon
         {
-            //Ta bort receptet från listan
+            //Ta bort receptet från listan och textfilen
             TaBort();
         }
 
-        // Stängde tillfälligt av comboBox. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
+       // ComboBox metod
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
         {
             List<Recipe> recipes = dataHandler.recipes;
