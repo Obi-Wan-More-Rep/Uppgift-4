@@ -1,4 +1,6 @@
 köttbullar,kött,../../../Bilder/köttbullar.jpg,dkfkfjkf
-fiskpinnar,fisk,,gigigi
-köttfärs,kött,,hdjfd'dfhd\ndfhjdkhf\ndhhf\ndfjk
-Lax,fisk,,dbfd\ndfjdhf\ndfdhf\nfdf
+fiskpinnar,fisk,../../../Bilder/fiskpinnar.jpg,gigigi
+köttfärs,kött,../../../Bilder/köttfärs.jpg,hdjfd'dfhd\ndfhjdkhf\ndhhf\ndfjk
+Lax,fisk,../../../Bilder/lax.jpg,dbfd\ndfjdhf\ndfdhf\nfdf
+Grönsakssoppa,Vegetariskt,../../../Bilder/Grönsakssoppa.jpeg, Bryt dig in i någons trädgåtd och tjäl deras grönsaker och stoppa i en blender. RÖr ner i en gryta. Tada!
+Kladdkaka,Dessert,../../../Bilder/Kladdkaka.jpg, Åk till sthlm och gå in i ett cafe. Gå runt disken och be om en kladdkaka. Spring iväg med kladdkakakn och säga att du bakade den
