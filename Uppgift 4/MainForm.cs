@@ -74,11 +74,11 @@ namespace Uppgift_4
                     if (File.Exists(recipe.PiImage))
                     {
                         Image image = Image.FromFile(recipe.PiImage);
-                        dataGridView.Rows.Add(recipe.Title, image);
+                        dataGridView.Rows.Add(recipe.Title, image, recipe.RecipeID);
                     }
                     else
                     {
-                        dataGridView.Rows.Add(recipe.Title);
+                        dataGridView.Rows.Add(recipe.Title, null, recipe.RecipeID);
                     }
                 }
             }
