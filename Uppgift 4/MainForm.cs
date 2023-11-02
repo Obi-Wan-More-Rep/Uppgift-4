@@ -47,9 +47,8 @@ namespace Uppgift_4
             }
         }
 
-        //stängde tillfälligt av ta bort metoden. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
-
-        public void TaBort()
+        // Ta bort knappen
+        public void TaBort() // Simon
         {
             var index = dataGridView.SelectedCells[0];
             if (index != null)
