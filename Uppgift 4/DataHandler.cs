@@ -36,9 +36,9 @@ namespace Uppgift_4
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] parts = line.Split('#');
-                    if (parts.Length == 4)
+                    if (parts.Length == 5)
                     {
-                        recipes.Add(new Recipe { Title = parts[0], Type = parts[1], PiImage = parts[2], Description = parts[3] });
+                        recipes.Add(new Recipe { Title = parts[0], Type = parts[1], PiImage = parts[2], RecipeID = parts[3], Description = parts[4] });
                     }
                     else //Kevin
                     {
@@ -85,7 +85,7 @@ namespace Uppgift_4
             {
                 foreach (Recipe recipe in recipes)
                 {
-                    writer.WriteLine($"{recipe.Title}#{recipe.Type}#{recipe.PiImage}#{recipe.Description}"); // Vanessa eller Najah ändrade split tecknet från ',' till '#'
+                    writer.WriteLine($"{recipe.Title}#{recipe.Type}#{recipe.PiImage}#{recipe.RecipeID}#{recipe.Description}"); // Vanessa eller Najah ändrade split tecknet från ',' till '#'
                 }
             }
             Debug.WriteLine("Text file updated.");
@@ -109,7 +109,7 @@ namespace Uppgift_4
         // Ta bort recept i listan och uppdatera textfilen
         public void RemoveRecipe(Recipe selectedRecipe) // Kevin
         {
-            recipes.RemoveAll(recipe => recipe.Title == selectedRecipe.Title); // recipes .Remove() fungerar inte eftersom av någon anledning så ändras
+            recipes.RemoveAll(recipe => recipe.RecipeID == selectedRecipe.RecipeID); // recipes .Remove() fungerar inte eftersom av någon anledning så ändras "HashCode" för selectedRecipe objektet när den tas emot i denna metod. Man kan se det med hjälp av en "Debug.WriteLine()" "Debug.WriteLine($"Recipe in List HashCode: {recipe.GetHashCode()}");"
             UpdateTextFile();
         }
     }

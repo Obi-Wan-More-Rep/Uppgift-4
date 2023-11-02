@@ -29,11 +29,11 @@ namespace Uppgift_4
                 if (File.Exists(recipe.PiImage))
                 {
                     Image image = Image.FromFile(recipe.PiImage);
-                    dataGridView.Rows.Add(recipe.Title, image);
+                    dataGridView.Rows.Add(recipe.Title, image, recipe.RecipeID);
                 }
                 else
                 {
-                    dataGridView.Rows.Add(recipe.Title);
+                    dataGridView.Rows.Add(recipe.Title, null, recipe.RecipeID);
                 }
                 // Lägg till typen/kategori i ComboBoxen om den redan inte finns. (Flyttade Najah's ComboBox kod från "if" & och "else" statements till en separat "if" statement.)
                 if (!comboBox1.Items.Contains(recipe.Type))
@@ -51,9 +51,9 @@ namespace Uppgift_4
             if (index != null)
                 dataHandler.recipes.RemoveAt(index.RowIndex);
             dataGridView.Rows.RemoveAt(index.RowIndex);
-            
+
             dataHandler.UpdateTextFile(); // Simon
-            
+
         }
 
 
@@ -80,19 +80,19 @@ namespace Uppgift_4
                     {
                         dataGridView.Rows.Add(recipe.Title);
                     }
-                }                
+                }
             }
         }
 
-        // Lägg till ett nytt recept
+        // Skapa ett nytt recept
         private void buttonAdd_Click(object sender, EventArgs e) // Vanessa & Cornelia
         {
-            RecipeDetails details = new RecipeDetails(isAdminSignedIn);
+            RecipeDetails details = new RecipeDetails(isAdminSignedIn, dataHandler);
             details.ShowDialog();
 
             if (details.AddRecipe)
             {
-                Recipe newRecipe = details.UppdatedRecipe;
+                Recipe newRecipe = details.UppdatedOrAddedRecipe;
                 // om man skrivit något på det nya receptet kommer den skapa ett nytt recept
                 if (newRecipe != null)
                 {
@@ -103,11 +103,11 @@ namespace Uppgift_4
                     if (File.Exists(newRecipe.PiImage)) //La till if statements (Kevin)
                     {
                         Image image = Image.FromFile(newRecipe.PiImage);
-                        dataGridView.Rows.Add(newRecipe.Title, image);
+                        dataGridView.Rows.Add(newRecipe.Title, image, newRecipe.RecipeID);
                     }
                     else
                     {
-                        dataGridView.Rows.Add(newRecipe.Title);
+                        dataGridView.Rows.Add(newRecipe.Title, null, newRecipe.RecipeID);
                     }
                 }
             }
@@ -145,7 +145,7 @@ namespace Uppgift_4
             TaBort();
         }
 
-       // ComboBox metod
+        // ComboBox metod
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
         {
             List<Recipe> recipes = dataHandler.recipes;
@@ -158,13 +158,13 @@ namespace Uppgift_4
                     if (File.Exists(recipe.PiImage))
                     {
                         Image image = Image.FromFile(recipe.PiImage);
-                        dataGridView.Rows.Add(recipe.Title, image);
+                        dataGridView.Rows.Add(recipe.Title, image, recipe.RecipeID);
 
                     }
 
                     else
                     {
-                        dataGridView.Rows.Add((recipe.Title));
+                        dataGridView.Rows.Add(recipe.Title, null, recipe.RecipeID);
                     }
                 }
             }
@@ -178,13 +178,13 @@ namespace Uppgift_4
                     if (File.Exists(recipe.PiImage))
                     {
                         Image image = Image.FromFile(recipe.PiImage);
-                        dataGridView.Rows.Add(recipe.Title, image);
+                        dataGridView.Rows.Add(recipe.Title, image, recipe.RecipeID);
 
                     }
 
                     else
                     {
-                        dataGridView.Rows.Add((recipe.Title));
+                        dataGridView.Rows.Add(recipe.Title, null, recipe.RecipeID);
                     }
                 }
             }
@@ -197,8 +197,8 @@ namespace Uppgift_4
             if (dataGridView.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridView.SelectedRows[0]; // Sista valda raden
-                string selectedTitle = selectedRow.Cells[0].Value.ToString(); // namnet på receptet
-                Recipe selectedRecipe = dataHandler.recipes.FirstOrDefault(recipe => recipe.Title == selectedTitle); // Sök efter alla recept till du hittar ett med matchande namn
+                string selectedID = selectedRow.Cells[2].Value.ToString(); // Recept ID
+                Recipe selectedRecipe = dataHandler.recipes.FirstOrDefault(recipe => recipe.RecipeID == selectedID); // Sök efter alla recept till du hittar ett med matchande namn
 
                 // Om det finns ett recept i listan som har samma namn som selectedRecipe
                 if (selectedRecipe != null)
@@ -208,7 +208,7 @@ namespace Uppgift_4
 
                     detailsForm.ShowDialog();
 
-                    Recipe updatedRecipe = detailsForm.UppdatedRecipe;
+                    Recipe updatedRecipe = detailsForm.UppdatedOrAddedRecipe;
 
                     // Om du klickar på att ta bort receptet
                     if (detailsForm.DeleteRecipe)

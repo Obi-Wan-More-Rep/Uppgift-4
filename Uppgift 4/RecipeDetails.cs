@@ -16,27 +16,29 @@ namespace Uppgift_4
     public partial class RecipeDetails : Form
     {
         private Recipe selectedRecipe { get; set; }
-        public Recipe UppdatedRecipe { get; set; }
+        public Recipe UppdatedOrAddedRecipe { get; set; }
         private bool isAdminSignedIn { get; set; }
         public bool DeleteRecipe { get; private set; }
         public bool AddRecipe { get; private set; }
+        public DataHandler DataHandler { get; set; }
 
         // Om du klickar på ett recept i MainForm
         public RecipeDetails(bool isAdminSignedIn, Recipe selectedRecipe) //Kevin
         {
             InitializeComponent();
             this.isAdminSignedIn = isAdminSignedIn;
-            UppdatedRecipe = new Recipe { Title = selectedRecipe.Title, Type = selectedRecipe.Type, PiImage = selectedRecipe.PiImage, Description = selectedRecipe.Description };
+            UppdatedOrAddedRecipe = new Recipe { Title = selectedRecipe.Title, Type = selectedRecipe.Type, PiImage = selectedRecipe.PiImage, RecipeID = selectedRecipe.RecipeID, Description = selectedRecipe.Description };
             this.selectedRecipe = selectedRecipe;
             StandardUserInterfaceSettings();
         }
 
         // Om du klickar på AddNewRecipe knappen i MainForm
-        public RecipeDetails(bool isAdminSignedIn) // Kevin
+        public RecipeDetails(bool isAdminSignedIn, DataHandler dataHandler) // Kevin
         {
             InitializeComponent();
             this.isAdminSignedIn = isAdminSignedIn;
             this.selectedRecipe = new Recipe();
+            this.DataHandler = dataHandler;
             AddNewRecipeUserInterfaceSettings();
         }
 
@@ -120,12 +122,16 @@ namespace Uppgift_4
         // Lägg till ett recept
         private void buttonAddRecipe_Click(object sender, EventArgs e) //Cornelia
         {
+            // Skapa ett nytt recept ID
+            string newRecipeID = RecipeIDGenerator();
+
             AddRecipe = true;
-            UppdatedRecipe = new Recipe     // kan ändra denna rad imorgon
+            UppdatedOrAddedRecipe = new Recipe
             {
                 Title = textBoxTitle.Text,
                 Type = textBoxType.Text,
                 PiImage = "",           // Kan lägga till en combobox/textbox i Form designen där man kan antingen välja vilken bild att använda sig av eller skriva in filsökvägen på en bild som finns på datorn.
+                RecipeID = newRecipeID,
                 Description = String.Join(@"\n", richTxtDescription.Lines)
             };
             this.Close();
@@ -141,16 +147,34 @@ namespace Uppgift_4
         // Uppdatera ett recept
         private void buttonUpdateRecipe_Click(object sender, EventArgs e) // Kevin
         {
-            UppdatedRecipe = new Recipe
+            UppdatedOrAddedRecipe = new Recipe
             {
                 Title = textBoxTitle.Text,
                 Type = textBoxType.Text,
                 PiImage = selectedRecipe.PiImage, // Kan lägga till en combobox/textbox där man kan antingen välja vilken bild att använda sig av eller skriva in filsökvägen som finns på datorn.
+                RecipeID = selectedRecipe.RecipeID,
                 Description = string.Join(@"\n", richTxtDescription.Lines)
             };
             this.Close();
         }
 
+        private string RecipeIDGenerator() // Kevin
+        {
+            List<Recipe> recipes = DataHandler.recipes; // Importera recept listan
+            
 
+            Random random = new Random(); // Skapa en ny random
+            
+            while (true) // Loopa denna kod tills datorn hittar ett tal/ID som inte redan existerar i något recept
+            {
+                string randomNumber = random.Next(1000, 9999).ToString();
+                Recipe DoesIDAlreadyExist = DataHandler.recipes.FirstOrDefault(recipe => recipe.RecipeID == randomNumber);
+
+                if (DoesIDAlreadyExist == null)
+                {
+                    return randomNumber;
+                }
+            }
+        }
     }
 }
