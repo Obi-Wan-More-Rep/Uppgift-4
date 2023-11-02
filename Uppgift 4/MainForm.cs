@@ -49,20 +49,23 @@ namespace Uppgift_4
 
         //stängde tillfälligt av ta bort metoden. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
 
-        //public void TaBort()
-        //{
-        //    var index = dataGridView.SelectedCells[0];
-        //    if (index != null)
-        //        recipes.RemoveAt(index.RowIndex);
-        //    dataGridView.Rows.RemoveAt(index.RowIndex);
-        //    StreamWriter sw = new StreamWriter(RecipeFilePath);
-        //    foreach (var s in recipes)
-        //    {
-        //        sw.WriteLine(s.Title + "," + s.Description + "," + s.Type);
+        public void TaBort()
+        {
+            var index = dataGridView.SelectedCells[0];
+            if (index != null)
+                dataHandler.recipes.RemoveAt(index.RowIndex);
+            dataGridView.Rows.RemoveAt(index.RowIndex);
+            
+            dataHandler.UpdateTextFile();
+            
+            //StreamWriter sw = new StreamWriter(RecipeFilePath);
+            //foreach (var s in recipes)
+            //{
+            //    sw.WriteLine(s.Title + "," + s.Description + "," + s.Type);
 
-        //    }
-        //    sw.Close();
-        //}
+            //}
+            //sw.Close();
+        }
 
 
 
@@ -150,8 +153,8 @@ namespace Uppgift_4
         private void buttonDelete_Click(object sender, EventArgs e) // Simon
         {
             //test
-            // Ta bort receptet från listan
-            //TaBort();
+            //Ta bort receptet från listan
+            TaBort();
         }
 
         // Stängde tillfälligt av comboBox. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
