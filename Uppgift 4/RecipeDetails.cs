@@ -151,6 +151,9 @@ namespace Uppgift_4
             this.Close();
         }
 
-        
+        private void textBoxType_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

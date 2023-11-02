@@ -37,24 +37,26 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             label2 = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // richTxtDescription
             // 
-            richTxtDescription.Location = new Point(40, 190);
+            richTxtDescription.Location = new Point(48, 551);
             richTxtDescription.Margin = new Padding(4, 2, 4, 2);
             richTxtDescription.Name = "richTxtDescription";
             richTxtDescription.ReadOnly = true;
             richTxtDescription.ScrollBars = RichTextBoxScrollBars.Horizontal;
-            richTxtDescription.Size = new Size(572, 234);
+            richTxtDescription.Size = new Size(593, 308);
             richTxtDescription.TabIndex = 0;
             richTxtDescription.Text = "";
             richTxtDescription.DoubleClick += richTxtDescription_DoubleClick;
             // 
             // buttonUpdateRecipe
             // 
-            buttonUpdateRecipe.Location = new Point(731, 466);
+            buttonUpdateRecipe.Location = new Point(725, 666);
             buttonUpdateRecipe.Margin = new Padding(4, 2, 4, 2);
             buttonUpdateRecipe.Name = "buttonUpdateRecipe";
             buttonUpdateRecipe.Size = new Size(190, 60);
@@ -66,7 +68,7 @@
             // 
             // buttonDeleteRecipe
             // 
-            buttonDeleteRecipe.Location = new Point(375, 468);
+            buttonDeleteRecipe.Location = new Point(725, 761);
             buttonDeleteRecipe.Margin = new Padding(4, 2, 4, 2);
             buttonDeleteRecipe.Name = "buttonDeleteRecipe";
             buttonDeleteRecipe.Size = new Size(185, 62);
@@ -78,7 +80,7 @@
             // 
             // buttonAddRecipe
             // 
-            buttonAddRecipe.Location = new Point(40, 468);
+            buttonAddRecipe.Location = new Point(725, 573);
             buttonAddRecipe.Margin = new Padding(4, 2, 4, 2);
             buttonAddRecipe.Name = "buttonAddRecipe";
             buttonAddRecipe.Size = new Size(190, 62);
@@ -90,7 +92,7 @@
             // 
             // textBoxTitle
             // 
-            textBoxTitle.Location = new Point(169, 84);
+            textBoxTitle.Location = new Point(170, 434);
             textBoxTitle.Margin = new Padding(4, 2, 4, 2);
             textBoxTitle.Name = "textBoxTitle";
             textBoxTitle.ReadOnly = true;
@@ -100,21 +102,22 @@
             // 
             // textBoxType
             // 
-            textBoxType.Location = new Point(169, 148);
+            textBoxType.Location = new Point(176, 77);
             textBoxType.Margin = new Padding(4, 2, 4, 2);
             textBoxType.Name = "textBoxType";
             textBoxType.ReadOnly = true;
             textBoxType.Size = new Size(305, 31);
             textBoxType.TabIndex = 5;
+            textBoxType.TextChanged += textBoxType_TextChanged;
             textBoxType.DoubleClick += TextBox_DoubleClick;
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Location = new Point(638, 190);
+            pictureBox1.Location = new Point(298, 52);
             pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(328, 235);
+            pictureBox1.Size = new Size(397, 296);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
@@ -122,22 +125,33 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(48, 151);
+            label1.Font = new Font("Times New Roman", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(54, 80);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(84, 25);
+            label1.Size = new Size(97, 25);
             label1.TabIndex = 7;
             label1.Text = "Category";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(48, 88);
+            label2.Font = new Font("Times New Roman", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(49, 438);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(44, 25);
+            label2.Size = new Size(56, 25);
             label2.TabIndex = 8;
             label2.Text = "Title";
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(textBoxType);
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(-6, 421);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1014, 454);
+            panel1.TabIndex = 9;
             // 
             // RecipeDetails
             // 
@@ -145,20 +159,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Startsida;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1000, 562);
+            ClientSize = new Size(1000, 870);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBoxType);
             Controls.Add(textBoxTitle);
             Controls.Add(buttonAddRecipe);
             Controls.Add(buttonDeleteRecipe);
             Controls.Add(buttonUpdateRecipe);
             Controls.Add(richTxtDescription);
+            Controls.Add(panel1);
             Margin = new Padding(4, 2, 4, 2);
             Name = "RecipeDetails";
             Text = "RecipeDetails";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -174,5 +189,6 @@
         private PictureBox pictureBox1;
         private Label label1;
         private Label label2;
+        private Panel panel1;
     }
 }
