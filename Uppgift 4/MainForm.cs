@@ -25,24 +25,21 @@ namespace Uppgift_4
             comboBox1.Items.Add("All types");
             foreach (Recipe recipe in recipes)
             {
+                // Lägg till recept till dataGridView
                 if (File.Exists(recipe.PiImage))
                 {
                     Image image = Image.FromFile(recipe.PiImage);
                     dataGridView.Rows.Add(recipe.Title, image);
-                    if (!comboBox1.Items.Contains(recipe.Type))
-                    {
-                        comboBox1.Items.Add(recipe.Type);
-
-                    }
                 }
                 else
                 {
                     dataGridView.Rows.Add(recipe.Title);
-                    if (!comboBox1.Items.Contains(recipe.Type))
-                    {
-                        comboBox1.Items.Add(recipe.Type);
+                }
+                // Lägg till typen/kategori i ComboBoxen om den redan inte finns. (Flyttade Najah's ComboBox kod från "if" & och "else" statements till en separat "if" statement.)
+                if (!comboBox1.Items.Contains(recipe.Type))
+                {
+                    comboBox1.Items.Add(recipe.Type);
 
-                    }
                 }
             }
         }
