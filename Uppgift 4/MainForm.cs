@@ -23,6 +23,7 @@ namespace Uppgift_4
         private void LoadRecipesIntoDataGridView()
         {
             List<Recipe> recipes = dataHandler.recipes; // få en lista av recepten från DataHandler klassen
+            comboBox1.Items.Add("All types");
             foreach (Recipe recipe in recipes)
             {
                 if (File.Exists(recipe.PiImage))
@@ -81,13 +82,11 @@ namespace Uppgift_4
                 {
                     if (File.Exists(recipe.PiImage))
                     {
-                        dataGridView.Rows.Clear();
                         Image image = Image.FromFile(recipe.PiImage);
                         dataGridView.Rows.Add(recipe.Title, image);
                     }
                     else
                     {
-                        dataGridView.Rows.Clear();
                         dataGridView.Rows.Add(recipe.Title);
                     }
                 }
@@ -163,8 +162,29 @@ namespace Uppgift_4
         // Stängde tillfälligt av comboBox. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
         {
+            List<Recipe> recipes = dataHandler.recipes;
             string selectedmatype = comboBox1.SelectedItem.ToString();
-            if (selectedmatype != null)
+            if (selectedmatype == "All types")
+            {
+                dataGridView.Rows.Clear();
+                foreach (var recipe in recipes)
+                {
+                    if (File.Exists(recipe.PiImage))
+                    {
+                        Image image = Image.FromFile(recipe.PiImage);
+                        dataGridView.Rows.Add(recipe.Title, image);
+
+                    }
+
+                    else
+                    {
+                        dataGridView.Rows.Add((recipe.Title));
+                    }
+
+                }
+
+            }
+            else //(selectedmatype != null)
             {
                 List<Recipe> selectedtype = dataHandler.recipes.Where(recipe => recipe.Type == selectedmatype).ToList();
                 dataGridView.Rows.Clear();

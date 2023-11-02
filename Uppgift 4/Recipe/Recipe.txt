@@ -1,2 +1,4 @@
 köttbullar,kött,../../../Bilder/köttbullar.jpg,dkfkfjkf
 fiskpinnar,fisk,,gigigi
+köttfärs,kött,,hdjfd'dfhd\ndfhjdkhf\ndhhf\ndfjk
+Lax,fisk,,dbfd\ndfjdhf\ndfdhf\nfdf

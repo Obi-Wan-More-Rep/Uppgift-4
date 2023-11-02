@@ -108,7 +108,7 @@
             textBoxType.ReadOnly = true;
             textBoxType.Size = new Size(305, 31);
             textBoxType.TabIndex = 5;
-            textBoxType.TextChanged += textBoxType_TextChanged;
+
             textBoxType.DoubleClick += TextBox_DoubleClick;
             // 
             // pictureBox1
