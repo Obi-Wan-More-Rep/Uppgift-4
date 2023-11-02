@@ -19,7 +19,6 @@ namespace Uppgift_4
 
         }
 
-
         private void LoadRecipesIntoDataGridView()
         {
             List<Recipe> recipes = dataHandler.recipes; // få en lista av recepten från DataHandler klassen
@@ -89,8 +88,7 @@ namespace Uppgift_4
                     {
                         dataGridView.Rows.Add(recipe.Title);
                     }
-                }
-                
+                }                
             }
         }
 
@@ -124,7 +122,6 @@ namespace Uppgift_4
         }
 
 
-
         private void buttonSignIn_Click(object sender, EventArgs e) // Kamal
         {
             FrmLogin frmLogin = new FrmLogin(dataHandler.admins);
@@ -138,7 +135,6 @@ namespace Uppgift_4
                 buttonAdd.Visible = true;
                 buttonDelete.Visible = true;
             }
-
         }
 
         private void buttonSignOut_Click(object sender, EventArgs e) // Kamal
@@ -157,7 +153,6 @@ namespace Uppgift_4
             // Ta bort receptet från listan
             //TaBort();
         }
-
 
         // Stängde tillfälligt av comboBox. "recipe" listan är under DataHandler metoden så du behöver inte göra många ändringar i denna metod. Exempelvis kan du skriva "dataHandler.recipes" eller "dataHandler.GetRecipes"
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Najah
@@ -180,9 +175,7 @@ namespace Uppgift_4
                     {
                         dataGridView.Rows.Add((recipe.Title));
                     }
-
                 }
-
             }
             else //(selectedmatype != null)
             {
@@ -205,7 +198,6 @@ namespace Uppgift_4
                 }
             }
         }
-
 
 
         // Öppna en ny Form när man klickar på en rad för att visa detaljerad information. Om du är inloggad som "Admin" så kan du även redigera receptet
@@ -251,14 +243,8 @@ namespace Uppgift_4
                         int rowIndex = selectedRow.Index;
                         dataGridView.Rows[rowIndex].Cells[0].Value = updatedRecipe.Title;
                     }
-
                 }
             }
-
-
-
         }
-
-
     }
 }

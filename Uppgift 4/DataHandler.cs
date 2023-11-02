@@ -35,7 +35,7 @@ namespace Uppgift_4
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] parts = line.Split(',');
+                    string[] parts = line.Split('#');
                     if (parts.Length == 4)
                     {
                         recipes.Add(new Recipe { Title = parts[0], Type = parts[1], PiImage = parts[2], Description = parts[3] });
@@ -68,7 +68,7 @@ namespace Uppgift_4
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] parts = line.Split(',');
+                    string[] parts = line.Split('#');
                     if (parts.Length == 2)
                     {
                         admins.Add(new Admin { Username = parts[0], Password = parts[1] });
@@ -85,7 +85,7 @@ namespace Uppgift_4
             {
                 foreach (Recipe recipe in recipes)
                 {
-                    writer.WriteLine($"{recipe.Title},{recipe.Type},{recipe.PiImage},{recipe.Description}");
+                    writer.WriteLine($"{recipe.Title}#{recipe.Type}#{recipe.PiImage}#{recipe.Description}");
                 }
             }
             Debug.WriteLine("Text file updated.");

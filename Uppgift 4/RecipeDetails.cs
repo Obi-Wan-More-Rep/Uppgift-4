@@ -151,6 +151,6 @@ namespace Uppgift_4
             this.Close();
         }
 
-       
+
     }
 }

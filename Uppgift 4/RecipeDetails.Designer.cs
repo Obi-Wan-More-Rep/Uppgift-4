@@ -49,7 +49,7 @@
             richTxtDescription.Name = "richTxtDescription";
             richTxtDescription.ReadOnly = true;
             richTxtDescription.ScrollBars = RichTextBoxScrollBars.Horizontal;
-            richTxtDescription.Size = new Size(593, 308);
+            richTxtDescription.Size = new Size(593, 342);
             richTxtDescription.TabIndex = 0;
             richTxtDescription.Text = "";
             richTxtDescription.DoubleClick += richTxtDescription_DoubleClick;
@@ -108,7 +108,6 @@
             textBoxType.ReadOnly = true;
             textBoxType.Size = new Size(305, 31);
             textBoxType.TabIndex = 5;
-
             textBoxType.DoubleClick += TextBox_DoubleClick;
             // 
             // pictureBox1
@@ -150,7 +149,7 @@
             panel1.Controls.Add(label1);
             panel1.Location = new Point(-6, 421);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1014, 454);
+            panel1.Size = new Size(1014, 496);
             panel1.TabIndex = 9;
             // 
             // RecipeDetails
@@ -159,7 +158,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Startsida;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1000, 870);
+            ClientSize = new Size(1000, 904);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
             Controls.Add(textBoxTitle);
