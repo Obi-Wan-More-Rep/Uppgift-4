@@ -25,22 +25,28 @@ namespace Uppgift_4
             comboBox1.Items.Add("All types");
             foreach (Recipe recipe in recipes)
             {
-                // Lägg till recept till dataGridView
-                if (File.Exists(recipe.PiImage))
-                {
-                    Image image = Image.FromFile(recipe.PiImage);
-                    dataGridView.Rows.Add(recipe.Title, image, recipe.RecipeID);
-                }
-                else
-                {
-                    dataGridView.Rows.Add(recipe.Title, null, recipe.RecipeID);
-                }
+                AddRecipesToDataGridView(recipe);
+
                 // Lägg till typen/kategori i ComboBoxen om den redan inte finns. (Flyttade Najah's ComboBox kod från "if" & och "else" statements till en separat "if" statement.)
                 if (!comboBox1.Items.Contains(recipe.Type))
                 {
                     comboBox1.Items.Add(recipe.Type);
 
                 }
+            }
+        }
+
+        // Lägg till recept till dataGridView
+        private void AddRecipesToDataGridView(Recipe recipe)
+        {
+            if (File.Exists(recipe.PiImage))
+            {
+                Image image = Image.FromFile(recipe.PiImage);
+                dataGridView.Rows.Add(recipe.Title, image, recipe.RecipeID);
+            }
+            else
+            {
+                dataGridView.Rows.Add(recipe.Title, null, recipe.RecipeID);
             }
         }
 
@@ -71,15 +77,7 @@ namespace Uppgift_4
                     recipe.Type.ToLower().Contains(searchText))
 
                 {
-                    if (File.Exists(recipe.PiImage))
-                    {
-                        Image image = Image.FromFile(recipe.PiImage);
-                        dataGridView.Rows.Add(recipe.Title, image, recipe.RecipeID);
-                    }
-                    else
-                    {
-                        dataGridView.Rows.Add(recipe.Title, null, recipe.RecipeID);
-                    }
+                    AddRecipesToDataGridView(recipe);
                 }
             }
         }
@@ -100,15 +98,7 @@ namespace Uppgift_4
                     dataHandler.AddRecipe(newRecipe);
 
                     // Lägg till receptet i dataGridView
-                    if (File.Exists(newRecipe.PiImage)) //La till if statements (Kevin)
-                    {
-                        Image image = Image.FromFile(newRecipe.PiImage);
-                        dataGridView.Rows.Add(newRecipe.Title, image, newRecipe.RecipeID);
-                    }
-                    else
-                    {
-                        dataGridView.Rows.Add(newRecipe.Title, null, newRecipe.RecipeID);
-                    }
+                    AddRecipesToDataGridView(newRecipe);
                 }
             }
         }
@@ -155,17 +145,7 @@ namespace Uppgift_4
                 dataGridView.Rows.Clear();
                 foreach (var recipe in recipes)
                 {
-                    if (File.Exists(recipe.PiImage))
-                    {
-                        Image image = Image.FromFile(recipe.PiImage);
-                        dataGridView.Rows.Add(recipe.Title, image, recipe.RecipeID);
-
-                    }
-
-                    else
-                    {
-                        dataGridView.Rows.Add(recipe.Title, null, recipe.RecipeID);
-                    }
+                    AddRecipesToDataGridView(recipe);
                 }
             }
             else //(selectedmatype != null)
@@ -175,17 +155,7 @@ namespace Uppgift_4
                 foreach (var recipe in selectedtype)
                 {
 
-                    if (File.Exists(recipe.PiImage))
-                    {
-                        Image image = Image.FromFile(recipe.PiImage);
-                        dataGridView.Rows.Add(recipe.Title, image, recipe.RecipeID);
-
-                    }
-
-                    else
-                    {
-                        dataGridView.Rows.Add(recipe.Title, null, recipe.RecipeID);
-                    }
+                    AddRecipesToDataGridView(recipe);
                 }
             }
         }
