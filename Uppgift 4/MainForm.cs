@@ -55,15 +55,8 @@ namespace Uppgift_4
                 dataHandler.recipes.RemoveAt(index.RowIndex);
             dataGridView.Rows.RemoveAt(index.RowIndex);
             
-            dataHandler.UpdateTextFile();
+            dataHandler.UpdateTextFile(); // Simon
             
-            //StreamWriter sw = new StreamWriter(RecipeFilePath);
-            //foreach (var s in recipes)
-            //{
-            //    sw.WriteLine(s.Title + "," + s.Description + "," + s.Type);
-
-            //}
-            //sw.Close();
         }
 
 
@@ -151,7 +144,6 @@ namespace Uppgift_4
         // Ta bort markerad recipe
         private void buttonDelete_Click(object sender, EventArgs e) // Simon
         {
-            //test
             //Ta bort receptet från listan
             TaBort();
         }

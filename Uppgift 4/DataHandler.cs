@@ -40,7 +40,7 @@ namespace Uppgift_4
                     {
                         recipes.Add(new Recipe { Title = parts[0], Type = parts[1], PiImage = parts[2], Description = parts[3] });
                     }
-                    else
+                    else //Kevin
                     {
                         if (recipes.Count > 0)
                         {
@@ -78,7 +78,7 @@ namespace Uppgift_4
         }
 
         // Uppdatera textfilen med recipes listan
-        public void UpdateTextFile()
+        public void UpdateTextFile() // både Simon och Kevin skrev samma sak så det räcker att kalla på metoden på samma ställe (härifrån)
         {
             Debug.WriteLine("Updating text file...");
             using (StreamWriter writer = new StreamWriter(RecipeFilePath, false))
@@ -91,24 +91,25 @@ namespace Uppgift_4
             Debug.WriteLine("Text file updated.");
         }
 
-        //// Hämta in alla recept i en variabel
+        //// Läs textfilen och spara dem i en lista.        Denna metod är vad som skapade duplicerings problemet. För att undvika duplicera recept så får man enbart köra "LoadRecipes()" bara en gång (när man startar programmet) Kevin
+        /// Jag misstänker att man behöver en "using()" eller ".Close()" på loadRecipes eller något liknande om man vill köra "LoadRecipes()" metoden flera gånger i programmet.
         //public List<Recipe> GetRecipes()
         //{
         //    LoadRecipes();
         //    return recipes;
         //}
 
-        // Lägg till till recept i listan och uppdatera textfilen
-        public void AddRecipe(Recipe recipe)
+        // Lägg till recept i listan och uppdatera textfilen
+        public void AddRecipe(Recipe recipe) // Kevin
         {
             recipes.Add(recipe);
             UpdateTextFile();
         }
 
         // Ta bort recept i listan och uppdatera textfilen
-        public void RemoveRecipe(Recipe selectedRecipe)
+        public void RemoveRecipe(Recipe selectedRecipe) // Kevin
         {
-            recipes.RemoveAll(recipe => recipe.Title == selectedRecipe.Title);
+            recipes.RemoveAll(recipe => recipe.Title == selectedRecipe.Title); // recipes .Remove() fungerar inte eftersom av någon anledning så ändras
             UpdateTextFile();
         }
     }
