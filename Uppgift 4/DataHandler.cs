@@ -59,7 +59,7 @@ namespace Uppgift_4
         {
             if (!File.Exists(AdminFilePath))
             {
-                // Create a new empty ".txt" file
+                // Skapa en ny tom ".txt" fil om det inte redan existerar någon
                 File.Create(AdminFilePath).Close();
             }
 
@@ -85,7 +85,7 @@ namespace Uppgift_4
             {
                 foreach (Recipe recipe in recipes)
                 {
-                    writer.WriteLine($"{recipe.Title}#{recipe.Type}#{recipe.PiImage}#{recipe.Description}");
+                    writer.WriteLine($"{recipe.Title}#{recipe.Type}#{recipe.PiImage}#{recipe.Description}"); // Vanessa eller Najah ändrade split tecknet från ',' till '#'
                 }
             }
             Debug.WriteLine("Text file updated.");
