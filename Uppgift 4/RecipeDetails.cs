@@ -84,13 +84,12 @@ namespace Uppgift_4
             buttonAddRecipe.Visible = true;
             comboBoxImages.Visible = true;
 
-            //AVVAKTA MED DENNA kolla på alt
             textBoxTitle.BorderStyle = BorderStyle.None;
             textBoxType.BorderStyle = BorderStyle.None;
             richTxtDescription.BorderStyle = BorderStyle.None;
         }
 
-        private void TextBox_DoubleClick(object sender, EventArgs e)//Vanessa har tillfällig prov period på denna
+        private void TextBox_DoubleClick(object sender, EventArgs e)
         {
             if (isAdminSignedIn)
             {
@@ -152,7 +151,6 @@ namespace Uppgift_4
         {
             AddOrUppdateRecipe.Title = textBoxTitle.Text;
             AddOrUppdateRecipe.Type = textBoxType.Text;
-            //AddOrUppdateRecipe.PiImage = selectedRecipe.PiImage;
             AddOrUppdateRecipe.RecipeID = selectedRecipe.RecipeID;
             AddOrUppdateRecipe.Description = string.Join(@"\n", richTxtDescription.Lines);
             this.Close();

@@ -27,7 +27,7 @@ namespace Uppgift_4
             {
                 AddRecipesToDataGridView(recipe);
 
-                // Lägg till typen/kategori i ComboBoxen om den redan inte finns. (Flyttade Najah's ComboBox kod från "if" & och "else" statements till en separat "if" statement.)
+                // Lägg till typen/kategori i ComboBoxen om den redan inte finns.
                 if (!comboBox1.Items.Contains(recipe.Type))
                 {
                     comboBox1.Items.Add(recipe.Type);
@@ -70,7 +70,7 @@ namespace Uppgift_4
             string searchText = textBoxSearch.Text.ToLower(); // vara inte känslig om  stora boksatver
             dataGridView.Rows.Clear();
 
-            List<Recipe> recipes = dataHandler.recipes;  // Av någon anledning så dupliceras recept i dataGridView om man skriver "dataHandler.GetRecipes()" så jag löste det genom att skriva istället "dataHandler.recipes" (kevin)
+            List<Recipe> recipes = dataHandler.recipes; 
             foreach (var recipe in recipes)
             {
                 if (recipe.Title.ToLower().Contains(searchText) ||
@@ -200,8 +200,8 @@ namespace Uppgift_4
                         // Lägger till uppdaterade receptet i listan
                         dataHandler.AddRecipe(updatedRecipe);
 
-                        // Uppdaterar dataGridView          kunde ha uppdaterat direkt i datagridview och söka efter samma recept i recept listan och där också uppdatera den. Det hade sätt snyggare ut men blir mer kod.
-                        dataGridView.Rows.Clear();              //dataGridView.ClearSelection
+                        // Uppdaterar dataGridView
+                        dataGridView.Rows.Clear();             
                         LoadRecipesIntoDataGridView();
                     }
                 }
