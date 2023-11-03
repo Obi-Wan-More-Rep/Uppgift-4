@@ -57,7 +57,7 @@ namespace Uppgift_4
             }
             catch (IOException ex)
             {
-                SaveErrorsToFile("Går ej att läsa recept filen " + ex.Message);
+                SaveErrorsToLogFile("Går ej att läsa recept filen " + ex.Message);
             }   
         }
 
@@ -101,7 +101,7 @@ namespace Uppgift_4
             }
             catch (IOException ex)
             {
-                SaveErrorsToFile("Går ej att skriva i recept filen " + ex.Message);
+                SaveErrorsToLogFile("Går ej att skriva i recept filen " + ex.Message);
             } 
         }
 
@@ -127,7 +127,7 @@ namespace Uppgift_4
             UpdateTextFile();
         }
 
-        public void SaveErrorsToFile(string error)
+        public void SaveErrorsToLogFile(string error)
         {
             string errorLogFilePath = $@"../../../error.log";
 
