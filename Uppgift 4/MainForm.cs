@@ -90,7 +90,7 @@ namespace Uppgift_4
 
             if (details.AddRecipe)
             {
-                Recipe newRecipe = details.UppdatedOrAddedRecipe;
+                Recipe newRecipe = details.AddOrUppdateRecipe;
                 // om man skrivit något på det nya receptet kommer den skapa ett nytt recept
                 if (newRecipe != null)
                 {
@@ -178,7 +178,7 @@ namespace Uppgift_4
 
                     detailsForm.ShowDialog();
 
-                    Recipe updatedRecipe = detailsForm.UppdatedOrAddedRecipe;
+                    Recipe updatedRecipe = detailsForm.AddOrUppdateRecipe;
 
                     // Om du klickar på att ta bort receptet
                     if (detailsForm.DeleteRecipe)
@@ -192,7 +192,7 @@ namespace Uppgift_4
                     }
 
                     // Om du klickar på att uppdatera receptet och du har gjort ändringar
-                    else if (updatedRecipe.Title != selectedRecipe.Title || updatedRecipe.Description != selectedRecipe.Description || updatedRecipe.Type != selectedRecipe.Type)
+                    else if (updatedRecipe.Title != selectedRecipe.Title || updatedRecipe.Description != selectedRecipe.Description || updatedRecipe.Type != selectedRecipe.Type || updatedRecipe.PiImage != selectedRecipe.PiImage)
                     {
                         // Ta bort gamla receptet från listan
                         dataHandler.RemoveRecipe(selectedRecipe);
@@ -200,9 +200,9 @@ namespace Uppgift_4
                         // Lägger till uppdaterade receptet i listan
                         dataHandler.AddRecipe(updatedRecipe);
 
-                        // Uppdaterar dataGridView utan att rensa hela den och läsa om den. Detta fixar buggen med att recept duppliceras
-                        int rowIndex = selectedRow.Index;
-                        dataGridView.Rows[rowIndex].Cells[0].Value = updatedRecipe.Title;
+                        // Uppdaterar dataGridView          kunde ha uppdaterat direkt i datagridview och söka efter samma recept i recept listan och där också uppdatera den. Det hade sätt snyggare ut men blir mer kod.
+                        dataGridView.Rows.Clear();              //dataGridView.ClearSelection
+                        LoadRecipesIntoDataGridView();
                     }
                 }
             }

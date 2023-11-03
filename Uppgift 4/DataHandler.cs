@@ -21,37 +21,44 @@ namespace Uppgift_4
         }
 
         // Lägga till recept i recipe listan och i DataGridView
-        private void LoadRecipes()
+        private void LoadRecipes() // Kevin
         {
-            if (!File.Exists(RecipeFilePath))
+            try
             {
-                // skapa en ny tom ".txt" fil
-                File.Create(RecipeFilePath).Close();
-            }
-
-
-            using (StreamReader reader = new StreamReader(RecipeFilePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                if (!File.Exists(RecipeFilePath))
                 {
-                    string[] parts = line.Split('#');
-                    if (parts.Length == 5)
+                    // skapa en ny tom ".txt" fil
+                    File.Create(RecipeFilePath).Close();
+                }
+
+
+                using (StreamReader reader = new StreamReader(RecipeFilePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        recipes.Add(new Recipe { Title = parts[0], Type = parts[1], PiImage = parts[2], RecipeID = parts[3], Description = parts[4] });
-                    }
-                    else //Kevin
-                    {
-                        if (recipes.Count > 0)
+                        string[] parts = line.Split('#');
+                        if (parts.Length == 5)
                         {
-                            // Om receptet fortsätter på nästa rad
-                            // Kolla om recipes listan är tom först så att exception inte händer
-                            int rowIndex = recipes.Count - 1;
-                            recipes[rowIndex].Description += line;
+                            recipes.Add(new Recipe { Title = parts[0], Type = parts[1], PiImage = parts[2], RecipeID = parts[3], Description = parts[4] });
+                        }
+                        else //Kevin
+                        {
+                            if (recipes.Count > 0)
+                            {
+                                // Om receptet fortsätter på nästa rad
+                                // Kolla om recipes listan är tom först så att exception inte händer
+                                int rowIndex = recipes.Count - 1;
+                                recipes[rowIndex].Description += line;
+                            }
                         }
                     }
                 }
             }
+            catch (IOException ex)
+            {
+                SaveErrorsToFile("Går ej att läsa recept filen " + ex.Message);
+            }   
         }
 
         // Läs textfilen och lägg till alla Admins i listan
@@ -80,15 +87,22 @@ namespace Uppgift_4
         // Uppdatera textfilen med recipes listan
         public void UpdateTextFile() // både Simon och Kevin skrev samma sak så det räcker att kalla på metoden på samma ställe (härifrån)
         {
-            Debug.WriteLine("Updating text file...");
-            using (StreamWriter writer = new StreamWriter(RecipeFilePath, false))
+            try
             {
-                foreach (Recipe recipe in recipes)
+                Debug.WriteLine("Updating text file...");
+                using (StreamWriter writer = new StreamWriter(RecipeFilePath, false))
                 {
-                    writer.WriteLine($"{recipe.Title}#{recipe.Type}#{recipe.PiImage}#{recipe.RecipeID}#{recipe.Description}"); // Vanessa eller Najah ändrade split tecknet från ',' till '#'
+                    foreach (Recipe recipe in recipes)
+                    {
+                        writer.WriteLine($"{recipe.Title}#{recipe.Type}#{recipe.PiImage}#{recipe.RecipeID}#{recipe.Description}"); // Vanessa eller Najah ändrade split tecknet från ',' till '#'
+                    }
                 }
+                Debug.WriteLine("Text file updated.");
             }
-            Debug.WriteLine("Text file updated.");
+            catch (IOException ex)
+            {
+                SaveErrorsToFile("Går ej att skriva i recept filen " + ex.Message);
+            } 
         }
 
         //// Läs textfilen och spara dem i en lista.        Denna metod är vad som skapade duplicerings problemet. För att undvika duplicera recept så får man enbart köra "LoadRecipes()" bara en gång (när man startar programmet) Kevin
@@ -111,6 +125,24 @@ namespace Uppgift_4
         {
             recipes.RemoveAll(recipe => recipe.RecipeID == selectedRecipe.RecipeID); // recipes .Remove() fungerar inte eftersom av någon anledning så ändras "HashCode" för selectedRecipe objektet när den tas emot i denna metod. Man kan se det med hjälp av en "Debug.WriteLine()" "Debug.WriteLine($"Recipe in List HashCode: {recipe.GetHashCode()}");"
             UpdateTextFile();
+        }
+
+        public void SaveErrorsToFile(string error)
+        {
+            string errorLogFilePath = $@"../../../error.log";
+
+            if (!File.Exists(errorLogFilePath))
+            {
+                // Skapa en ny tom ".txt" fil om det inte redan existerar någon
+                File.Create(errorLogFilePath).Close();
+            }
+
+            using (StreamWriter writer = new StreamWriter(errorLogFilePath, true))
+            {
+                string logMessage = $"{DateTime.Now}: {error}";
+                writer.WriteLine(logMessage);
+            }
+
         }
     }
 }
